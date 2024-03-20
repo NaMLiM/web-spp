@@ -1,34 +1,93 @@
 @extends('layouts.backend.app')
-@section('title', 'Pembayaran')
-@section('content_title', 'Pembayaran')
+@section('title', 'Data Pembayaran')
+@push('css')
+    <!-- DataTables -->
+    <link rel="stylesheet"
+        href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+@endpush
+@section('content_title', 'Pembayaran Tahun ' . $tahun)
 @section('content')
-<div class="row">
-	<div class="col-lg-6">
-		<div class="card">
-			<div class="card-header">Pilih Tahun</div>
-			<div class="card-body">
-				<div class="list-group">
-				  @foreach($spp as $row)
-				  	@if($row->tahun == date('Y'))
-				  	<a href="{{ route('siswa.pembayaran-spp.pembayaranSppShow', $row->tahun) }}" class="list-group-item list-group-item-action active">
-				  		{{ $row->tahun }}
-				  	</a>
-				  	@else
-				  	<a href="{{ route('siswa.pembayaran-spp.pembayaranSppShow', $row->tahun) }}" class="list-group-item list-group-item-action">
-				  		{{ $row->tahun }}
-				  	</a>
-				  	@endif
-				  @endforeach
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-lg-6">
-    <div class="callout callout-danger">
-        <h5>Pemberitahuan!</h5>
+    <x-alert></x-alert>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">
+                        <i class="fas fa-fw fa-circle"></i> STATUS PEMBAYARAN
+                    </a>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="" class="table-bordered table-striped table">
+                        <thead>
+                            <tr>
+                                <th>Bulan</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Universe::bulanAll() as $key => $value)
+                                <tr>
+                                    <td>{{ $value['nama_bulan'] }}</td>
+                                    <td>
+                                        @if (Universe::statusPembayaranBulan($value['nama_bulan'], $tahun) == 'DIBAYAR')
+                                            <a href="javascript:(0)" class="btn btn-success btn-sm"><i class=""></i>
+                                                {{ Universe::statusPembayaranBulan($value['nama_bulan'], $tahun) }}
+                                            </a>
+                                        @else
+                                            <a href="javascript:(0)" class="btn btn-danger btn-sm"><i class=""></i>
+                                                {{ Universe::statusPembayaranBulan($value['nama_bulan'], $tahun) }}
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+@stop
 
-        <p>Garis biru pada list tahun menandakan tahun aktif / tahun sekarang.</p>
-      </div>
-  </div>
-</div>
-@endsection
+@push('js')
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js">
+    </script>
+    <script
+        src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js">
+    </script>
+    <script
+        src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
+    </script>
+    <script>
+        $(function() {
+            $("#dataTable1").DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+
+            $('#dataTable2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+@endpush

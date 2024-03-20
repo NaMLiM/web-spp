@@ -62,7 +62,7 @@ class SiswaController extends Controller
         ]);
 
         if ($validator->passes()) {
-            DB::transaction(function() use($request){
+            DB::transaction(function () use ($request) {
                 $user = User::create([
                     'username' => Str::lower($request->username),
                     'password' => Hash::make('sppr2021'),
@@ -72,7 +72,7 @@ class SiswaController extends Controller
 
                 Siswa::create([
                     'user_id' => $user->id,
-                    'kode_siswa' => 'SSWR'.Str::upper(Str::random(5)),
+                    'kode_siswa' => 'SSWR' . Str::upper(Str::random(5)),
                     'nisn' => $request->nisn,
                     'nis' => $request->nis,
                     'nama_siswa' => $request->nama_siswa,
@@ -83,7 +83,7 @@ class SiswaController extends Controller
                 ]);
             });
 
-            return response()->json(['message' => 'Data berhasil disimpan!']);   
+            return response()->json(['message' => 'Data berhasil disimpan!']);
         }
 
         return response()->json(['error' => $validator->errors()->all()]);

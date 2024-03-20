@@ -13,7 +13,7 @@
 		<div class="card">
 			<div class="card-header">
 				<a href="{{ route('pembayaran.index') }}" class="btn btn-danger btn-sm">
-				<i class="fas fa-window-close fa-fw"></i> 
+				<i class="fas fa-window-close fa-fw"></i>
 			      BATALKAN
 			    </a>
 			</div>
@@ -57,7 +57,7 @@
 									<small class="text-danger">{{ $message }}</small>
 								@enderror
 							</div>
-						</div>	
+						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-3">
@@ -90,7 +90,7 @@
 									@endforeach
 								</select>
 							</div>
-						</div>	
+						</div>
 						<div class="col-lg-3">
 							<div class="form-group">
 								<label for="total_bayar">Total Bayar:</label>
@@ -99,13 +99,13 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary"><i class="fas fa-save fa-fw"></i> 
+						<button type="submit" class="btn btn-primary"><i class="fas fa-save fa-fw"></i>
 							KONFIRMASI
 						</button>
-					</div>						
+					</div>
 				</form>
 			</div>
-		</div>	
+		</div>
 	</div>
 </div>
 @stop

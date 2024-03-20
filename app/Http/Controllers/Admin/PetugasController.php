@@ -42,7 +42,7 @@ class PetugasController extends Controller
         ]);
 
         if ($validator->passes()) {
-            DB::transaction(function() use($request){
+            DB::transaction(function () use ($request) {
                 $user = User::create([
                     'username' => Str::lower($request->username),
                     'password' => Hash::make('sppr2021'),
@@ -52,13 +52,13 @@ class PetugasController extends Controller
 
                 Petugas::create([
                     'user_id' => $user->id,
-                    'kode_petugas' => 'PTGR'.Str::upper(Str::random(5)),
+                    'kode_petugas' => 'PTGR' . Str::upper(Str::random(5)),
                     'nama_petugas' => $request->nama_petugas,
                     'jenis_kelamin' => $request->jenis_kelamin,
                 ]);
             });
 
-            return response()->json(['message' => 'Data berhasil disimpan!']);   
+            return response()->json(['message' => 'Data berhasil disimpan!']);
         }
 
         return response()->json(['error' => $validator->errors()->all()]);
@@ -91,7 +91,7 @@ class PetugasController extends Controller
         ]);
 
         if ($validator->passes()) {
-            Petugas::findOrFail($id)->update($request->all());   
+            Petugas::findOrFail($id)->update($request->all());
 
             return response()->json(['message' => 'Data berhasil diupdate!']);
         }
@@ -107,7 +107,7 @@ class PetugasController extends Controller
      */
     public function destroy($id)
     {
-        DB::transaction(function() use($id){
+        DB::transaction(function () use ($id) {
             $petugas = Petugas::findOrFail($id);
             User::findOrFail($petugas->user_id)->delete();
             $petugas->delete();

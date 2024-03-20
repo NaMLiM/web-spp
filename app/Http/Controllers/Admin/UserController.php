@@ -20,7 +20,7 @@ class UserController extends Controller
         if ($request->ajax()) {
             return $datatable->data();
         }
-        
+
         return view('admin.user.index');
     }
 

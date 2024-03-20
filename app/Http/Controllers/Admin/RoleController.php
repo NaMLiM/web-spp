@@ -41,7 +41,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        foreach($request->name as $name) {
+        foreach ($request->name as $name) {
             Role::create([
                 'name' => $name,
             ]);

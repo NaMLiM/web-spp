@@ -8,30 +8,32 @@ use App\Models\Siswa;
 use App\Models\Spp;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use DataTables;
-use PDF;
+use Illuminate\Support\Carbon;
+use Yajra\DataTables\Facades\DataTables;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class SiswaController extends Controller
 {
+    /**
+     * Class SiswaController
+     *
+     * This class handles the functionality related to Siswa (student) controller.
+     * It extends the base Controller class.
+     *
+     * @package App\Http\Controllers
+     */
     public function pembayaranSpp()
     {
-        $spp = Spp::all();
-
-        return view('siswa.pembayaran-spp', compact('spp'));
-    }
-
-    public function pembayaranSppShow(Spp $spp)
-    {
+        $tahun = Carbon::now()->year;
         $siswa = Siswa::where('user_id', Auth::user()->id)
             ->first();
 
         $pembayaran = Pembayaran::with(['petugas', 'siswa'])
             ->where('siswa_id', $siswa->id)
-            ->where('tahun_bayar', $spp->tahun)
+            ->where('tahun_bayar', $tahun)
             ->oldest()
             ->get();
-
-        return view('siswa.pembayaran-spp-show', compact('pembayaran', 'siswa', 'spp'));
+        return view('siswa.pembayaran-spp', compact('pembayaran', 'siswa', 'tahun'));
     }
 
     public function historyPembayaran(Request $request)
@@ -39,18 +41,18 @@ class SiswaController extends Controller
         if ($request->ajax()) {
             $siswa = Siswa::where('user_id', Auth::user()->id)
                 ->first();
-            
-            $data = Pembayaran::with(['petugas', 'siswa' => function($query) {
+
+            $data = Pembayaran::with(['petugas', 'siswa' => function ($query) {
                 $query->with(['kelas']);
             }])
                 ->where('siswa_id', $siswa->id)
                 ->latest()
                 ->get();
-            
+
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function($row) {
-                    $btn = '<div class="row"><a href="'.route('siswa.history-pembayaran.preview', $row->id).'"class="btn btn-danger btn-sm ml-2" target="_blank">
+                ->addColumn('action', function ($row) {
+                    $btn = '<div class="row"><a href="' . route('siswa.history-pembayaran.preview', $row->id) . '"class="btn btn-danger btn-sm ml-2" target="_blank">
                     <i class="fas fa-print fa-fw"></i>
                     </a>';
                     return $btn;
@@ -58,21 +60,21 @@ class SiswaController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-    	
-    	return view('siswa.history-pembayaran');
+
+        return view('siswa.history-pembayaran');
     }
 
     public function previewHistoryPembayaran($id)
     {
         $data['siswa'] = Siswa::where('user_id', Auth::user()->id)
             ->first();
-        
+
         $data['pembayaran'] = Pembayaran::with(['petugas', 'siswa'])
             ->where('id', $id)
             ->where('siswa_id', $data['siswa']->id)
             ->first();
-        
-        $pdf = PDF::loadView('siswa.history-pembayaran-preview',$data);
+
+        $pdf = PDF::loadView('siswa.history-pembayaran-preview', $data);
         return $pdf->stream();
     }
 
@@ -96,12 +98,12 @@ class SiswaController extends Controller
 
         if ($data['pembayaran']->count() > 0) {
             $pdf = PDF::loadView('siswa.laporan-preview', $data);
-            return $pdf->download('pembayaran-spp-'.$siswa->nama_siswa.'-'.
-                $siswa->nisn.'-'.
-                $request->tahun_bayar.'-'.
-                Str::random(9).'.pdf');
-        }else{
-            return back()->with('error', 'Data Pembayaran Spp Anda Tahun '.$request->tahun_bayar.' tidak tersedia');
+            return $pdf->download('pembayaran-spp-' . $siswa->nama_siswa . '-' .
+                $siswa->nisn . '-' .
+                $request->tahun_bayar . '-' .
+                Str::random(9) . '.pdf');
+        } else {
+            return back()->with('error', 'Data Pembayaran Spp Anda Tahun ' . $request->tahun_bayar . ' tidak tersedia');
         }
     }
 }
