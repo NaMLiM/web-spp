@@ -22,12 +22,12 @@
     <body class="hold-transition login-page">
         <div class="login-box" style="margin-bottom: 20vh;">
             <div class="login-logo">
-                <a href=""><b>SPPR</b></a>
+                <a href=""><b>SMK NURUL AMANAH</b></a>
             </div>
             <!-- /.login-logo -->
             <div class="card">
                 <div class="card-body login-card-body">
-                    <p class="login-box-msg">Silahkan Login</p>
+                    <p class="login-box-msg">Login</p>
                     @error('username')
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ $message }}
@@ -41,20 +41,10 @@
                         <div class="input-group mb-3">
                             <input type="" name="username" value="{{ @old('username') }}" required=""
                                 class="form-control" placeholder="Username">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
-                                </div>
-                            </div>
                         </div>
                         <div class="input-group mb-3">
                             <input type="password" name="password" required="" class="form-control"
                                 placeholder="Password">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
                             <!-- /.col -->

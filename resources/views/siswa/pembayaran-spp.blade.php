@@ -14,8 +14,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">
-                        <i class="fas fa-fw fa-circle"></i> STATUS PEMBAYARAN
+                    <a href="{{ route('siswa.proses-bayar', $siswa->nisn) }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-fw fa-money-bill"></i> Bayar
                     </a>
                 </div>
                 <!-- /.card-header -->

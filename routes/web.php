@@ -20,12 +20,12 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home.index');
+    Route::get('spp/{tahun}', 'PembayaranController@spp')->name('pembayaran.spp');
 });
 
 Route::prefix('pembayaran')->middleware(['auth', 'role:admin|petugas'])->group(function () {
     Route::get('bayar', 'PembayaranController@index')->name('pembayaran.index');
     Route::get('bayar/{nisn}', 'PembayaranController@bayar')->name('pembayaran.bayar');
-    Route::get('spp/{tahun}', 'PembayaranController@spp')->name('pembayaran.spp');
     Route::post('bayar/{nisn}', 'PembayaranController@prosesBayar')->name('pembayaran.proses-bayar');
     Route::get('status-pembayaran', 'PembayaranController@statusPembayaran')
         ->name('pembayaran.status-pembayaran');
@@ -86,6 +86,9 @@ Route::prefix('admin')
 Route::prefix('siswa')
     ->middleware(['auth', 'role:siswa'])
     ->group(function () {
+        Route::get('pembayaran-spp/{nisn}', 'PembayaranController@bayar')->name('siswa.bayar');
+        Route::get('pembayaran-spp/invoice/{invoice}', 'PembayaranController@invoice')->name('siswa.invoice');
+        Route::post('pembayaran-spp/{nisn}', 'PembayaranController@prosesBayarSiswa')->name('siswa.proses-bayar');
         Route::get('pembayaran-spp', 'SiswaController@pembayaranSpp')->name('siswa.pembayaran-spp');
         Route::get('history-pembayaran', 'SiswaController@historyPembayaran')->name('siswa.history-pembayaran');
         Route::get('history-pembayaran/preview/{id}', 'SiswaController@previewHistoryPembayaran')->name('siswa.history-pembayaran.preview');

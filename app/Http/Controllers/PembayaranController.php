@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\Spp;
@@ -67,7 +68,6 @@ class PembayaranController extends Controller
 
         $petugas = Petugas::where('user_id', Auth::user()->id)
             ->first();
-
         $pembayaran = Pembayaran::whereIn('bulan_bayar', $request->bulan_bayar)
             ->where('tahun_bayar', $request->tahun_bayar)
             ->where('siswa_id', $request->siswa_id)
@@ -96,8 +96,50 @@ class PembayaranController extends Controller
             return back()
                 ->with('error', 'Siswa Dengan Nama : ' . $request->nama_siswa . ' , NISN : ' .
                     $request->nisn . ' Sudah Membayar Spp di bulan yang diinput (' .
-                    implode($pembayaran, ',') . ")" . ' , di Tahun : ' . $request->tahun_bayar . ' , Pembayaran Dibatalkan');
+                    implode(',', $pembayaran) . ")" . ' , di Tahun : ' . $request->tahun_bayar . ' , Pembayaran Dibatalkan');
         }
+    }
+
+    public function prosesBayarSiswa(Request $request, $nisn)
+    {
+        $xendit = new XenditController();
+        $request->validate([
+            'jumlah_bayar' => 'required',
+        ], [
+            'jumlah_bayar.required' => 'Jumlah bayar tidak boleh kosong!'
+        ]);
+
+        $pembayaran = Pembayaran::whereIn('bulan_bayar', $request->bulan_bayar)
+            ->where('tahun_bayar', $request->tahun_bayar)
+            ->where('siswa_id', $request->siswa_id)
+            ->pluck('bulan_bayar')
+            ->toArray();
+
+        if (!$pembayaran) {
+            $unik = date('Hs');
+            $kode_unik = substr(str_shuffle(1234567890), 0, 3);
+            $invoiceId = 'SPP' . $unik . $kode_unik;
+            $totalBayar = 0;
+            foreach ($request->bulan_bayar as $bulan) {
+                $totalBayar += $request->jumlah_bayar;
+            }
+            $createInvoice = $xendit->createPembayaran($invoiceId, $totalBayar, $request->metode_pembayaran);
+            if ($createInvoice) {
+                return redirect()->route('siswa.invoice', $invoiceId)
+                    ->with('success', 'Pembayaran berhasil dibuat!');
+            }
+        } else {
+            return back()
+                ->with('error', 'Siswa Dengan Nama : ' . $request->nama_siswa . ' , NISN : ' .
+                    $request->nisn . ' Sudah Membayar SPP di bulan yang diinput (' .
+                    implode(',', $pembayaran) . ")" . ' , di Tahun : ' . $request->tahun_bayar . ' , Pembayaran Dibatalkan');
+        }
+    }
+
+    public function invoice($invoice)
+    {
+        $data = Invoice::where('invoice', $invoice)->first();
+        return view('pembayaran.invoice', compact('data'));
     }
 
     public function statusPembayaran(Request $request)
