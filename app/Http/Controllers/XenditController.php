@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
 use Illuminate\Support\Facades\Config;
 use Xendit\Configuration;
 use Xendit\PaymentRequest\PaymentRequestApi;

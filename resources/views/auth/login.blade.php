@@ -17,6 +17,7 @@
             href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/dist/css/adminlte.min.css">
+        <link rel="stylesheet" href="/css/login.css">
     </head>
 
     <body class="hold-transition login-page">
