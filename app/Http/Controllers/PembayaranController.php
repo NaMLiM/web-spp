@@ -14,13 +14,32 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use Yajra\DataTables\DataTables;
+use App\DataTables\KelasPembayaranDataTable;
 
 class PembayaranController extends Controller
 {
-    public function index(Request $request)
+    // public function index(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $data = Siswa::with(['kelas'])->latest();
+    //         return DataTables::of($data)
+    //             ->addIndexColumn()
+    //             ->addColumn('action', function ($row) {
+    //                 $btn = '<div class="row"><a href="' . route('pembayaran.bayar', $row->nisn) . '"class="btn btn-primary btn-sm ml-2">
+    //                 <i class="fas fa-money-check"></i> BAYAR
+    //                 </a>';
+    //                 return $btn;
+    //             })
+    //             ->rawColumns(['action'])
+    //             ->make(true);
+    //     }
+
+    //     return view('pembayaran.index');
+    // }
+    public function index(Request $request, $kelas)
     {
         if ($request->ajax()) {
-            $data = Siswa::with(['kelas'])->latest();
+            $data = Siswa::with(['kelas'])->where('kelas_id', $kelas)->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -33,7 +52,15 @@ class PembayaranController extends Controller
                 ->make(true);
         }
 
-        return view('pembayaran.index');
+        return view('pembayaran.index')->with('kelas', $kelas);
+    }
+    public function kelas(Request $request, KelasPembayaranDataTable $datatable)
+    {
+        if ($request->ajax()) {
+            return $datatable->data();
+        }
+
+        return view('admin.kelas-pembayaran.index');
     }
 
     public function bayar($nisn)

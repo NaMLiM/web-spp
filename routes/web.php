@@ -24,7 +24,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::prefix('pembayaran')->middleware(['auth', 'role:admin|petugas'])->group(function () {
-    Route::get('bayar', 'PembayaranController@index')->name('pembayaran.index');
+    Route::get('bayar/kelas', 'PembayaranController@kelas')->name('pembayaran.kelas');
+    Route::get('bayar/kelas/{id}', 'PembayaranController@index')->name('pembayaran.index');
     Route::get('bayar/{nisn}', 'PembayaranController@bayar')->name('pembayaran.bayar');
     Route::post('bayar/{nisn}', 'PembayaranController@prosesBayar')->name('pembayaran.proses-bayar');
     Route::get('status-pembayaran', 'PembayaranController@statusPembayaran')

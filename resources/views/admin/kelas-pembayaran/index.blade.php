@@ -1,15 +1,17 @@
 @extends('layouts.backend.app')
-@section('title', 'Pembayaran')
+@section('title', 'Data Kelas')
 @push('css')
     <!-- DataTables -->
     <link rel="stylesheet"
         href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
         href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- Sweetalert 2 -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.css">
 @endpush
-@section('content_title', 'Pembayaran')
+@section('content_title', 'Data Kelas')
 @section('content')
-    <x-alert></x-alert>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -18,17 +20,13 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Siswa</th>
-                                <th>Nisn</th>
-                                <th>Kelas</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Detail</th>
+                                <th>Nama Kelas</th>
+                                <th>Kompetensi Keahlian</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -57,43 +55,8 @@
     <script
         src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
     </script>
-    <script>
-        $(function() {
-
-            var table = $("#dataTable2").DataTable({
-                processing: true,
-                serverSide: true,
-                "responsive": true,
-                ajax: "{{ route('pembayaran.index', $kelas) }}",
-                columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'id'
-                    },
-                    {
-                        data: 'nama_siswa',
-                        name: 'nama_siswa'
-                    },
-                    {
-                        data: 'nisn',
-                        name: 'nisn'
-                    },
-                    {
-                        data: 'kelas.nama_kelas',
-                        name: 'kelas.nama_kelas'
-                    },
-                    {
-                        data: 'jenis_kelamin',
-                        name: 'jenis_kelamin'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: true
-                    },
-                ]
-            });
-
-        });
-    </script>
+    <!-- Sweetalert 2 -->
+    <script type="text/javascript"
+        src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.js"></script>
+    @include('admin.kelas-pembayaran.ajax')
 @endpush

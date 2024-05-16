@@ -160,7 +160,7 @@
             var tahun = $(this).val()
 
             $.ajax({
-                url: "/spp/" + tahun,
+                url: "/public/spp/" + tahun,
                 method: "GET",
                 success: function(response) {
                     $("#nominal_spp_label").html(`Nominal SPP Tahun ` + tahun)

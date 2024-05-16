@@ -17,7 +17,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('pembayaran.index') }}" class="btn btn-primary btn-sm"><i
+                    <a href="{{ route('pembayaran.kelas') }}" class="btn btn-primary btn-sm"><i
                             class="fas fa-plus fa-fw"></i> Tambah Pembayaran</a>
                 </div>
                 <!-- /.card-header -->

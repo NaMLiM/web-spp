@@ -18,4 +18,59 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        @role('siswa')
+            <div class="col-lg-6">
+                <div class="card p-2">
+                    <a href="" class="card-block stretched-link">
+                        <div class="card-body">Pembayaran</div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card p-2">
+                    <a href="" class="card-block stretched-link">
+                        <div class="card-body">Riwayat Pembayaran</div>
+                    </a>
+                </div>
+            </div>
+        @endrole
+        @role('admin')
+            <div class="col-lg-3">
+                <div class="card p-2">
+                    <a href="" class="card-block stretched-link">
+                        <div class="card-body">Siswa</div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card p-2">
+                    <a href="" class="card-block stretched-link">
+                        <div class="card-body">Pembayaran</div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card p-2">
+                    <a href="" class="card-block stretched-link">
+                        <div class="card-body">Kelas</div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card p-2">
+                    <a href="" class="card-block stretched-link">
+                        <div class="card-body">Data Pembayaran</div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card p-2">
+                    <a href="" class="card-block stretched-link">
+                        <div class="card-body">Riwayat Pembayaran</div>
+                    </a>
+                </div>
+            </div>
+        @endrole
+    </div>
 @endsection

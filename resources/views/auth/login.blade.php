@@ -5,7 +5,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>SPP | Login</title>
-
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,13 +16,16 @@
             href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/dist/css/adminlte.min.css">
-        <link rel="stylesheet" href="/css/login.css">
+        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     </head>
 
     <body class="hold-transition login-page">
         <div class="login-box" style="margin-bottom: 20vh;">
             <div class="login-logo">
+
+                <img src="{{ asset('img/LOGO_SMK_NURUL_AMANAH.jpg') }}" alt=""><br>
                 <a href=""><b>SMK NURUL AMANAH</b></a>
+
             </div>
             <!-- /.login-logo -->
             <div class="card">
