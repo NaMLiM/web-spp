@@ -33,13 +33,9 @@
                                     <td>{{ $value['nama_bulan'] }}</td>
                                     <td>
                                         @if (Universe::statusPembayaranBulan($value['nama_bulan'], $tahun) == 'DIBAYAR')
-                                            <a href="javascript:(0)" class="btn btn-success btn-sm"><i class=""></i>
-                                                {{ Universe::statusPembayaranBulan($value['nama_bulan'], $tahun) }}
-                                            </a>
+                                            {{ Universe::statusPembayaranBulan($value['nama_bulan'], $tahun) }}
                                         @else
-                                            <a href="javascript:(0)" class="btn btn-danger btn-sm"><i class=""></i>
-                                                {{ Universe::statusPembayaranBulan($value['nama_bulan'], $tahun) }}
-                                            </a>
+                                            {{ Universe::statusPembayaranBulan($value['nama_bulan'], $tahun) }}
                                         @endif
                                     </td>
                                 </tr>

@@ -22,14 +22,14 @@
         @role('siswa')
             <div class="col-lg-6">
                 <div class="card p-2">
-                    <a href="" class="card-block stretched-link">
+                    <a href="/public/siswa/pembayaran-spp" class="card-block stretched-link">
                         <div class="card-body">Pembayaran</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="card p-2">
-                    <a href="" class="card-block stretched-link">
+                    <a href="/public/siswa/history-pembayaran" class="card-block stretched-link">
                         <div class="card-body">Riwayat Pembayaran</div>
                     </a>
                 </div>
@@ -38,35 +38,35 @@
         @role('admin')
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="" class="card-block stretched-link">
+                    <a href="/public/admin/siswa" class="card-block stretched-link">
                         <div class="card-body">Siswa</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="" class="card-block stretched-link">
+                    <a href="/public/admin/pembayaran-spp" class="card-block stretched-link">
                         <div class="card-body">Pembayaran</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="" class="card-block stretched-link">
+                    <a href="/public/admin/kelas" class="card-block stretched-link">
                         <div class="card-body">Kelas</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="" class="card-block stretched-link">
+                    <a href="/public/pembayaran/status-pembayaran" class="card-block stretched-link">
                         <div class="card-body">Data Pembayaran</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="" class="card-block stretched-link">
+                    <a href="/public/pembayaran/history-pembayaran" class="card-block stretched-link">
                         <div class="card-body">Riwayat Pembayaran</div>
                     </a>
                 </div>

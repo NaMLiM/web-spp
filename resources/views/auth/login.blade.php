@@ -24,6 +24,7 @@
             <div class="login-logo">
 
                 <img src="{{ asset('img/LOGO_SMK_NURUL_AMANAH.jpg') }}" alt=""><br>
+                <a href="" style="font-size: 1.5rem">Aplikasi SPP</a><br>
                 <a href=""><b>SMK NURUL AMANAH</b></a>
 
             </div>

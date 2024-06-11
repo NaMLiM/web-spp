@@ -8,7 +8,7 @@
     <body>
         <br><br>
         <center>
-            <h2 style="font-family: sans-serif;">Laporan Pembayaran Spp</h2><br><br>
+            <h2 style="font-family: sans-serif;">Laporan Pembayaran SPP</h2><br><br>
             <b style="font-family: sans-serif;">Nama Siswa : {{ $data_siswa->nama_siswa }}</b><br><br>
             <b style="font-family: sans-serif;">NISN : {{ $data_siswa->nisn }}</b><br><br>
             <b style="font-family: sans-serif;">Kelas : {{ $data_siswa->kelas->nama_kelas }}</b><br><br>

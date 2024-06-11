@@ -80,7 +80,7 @@
         var id = $(this).attr("id")
 
         $.ajax({
-            url: "/admin/spp/" + id + "/edit",
+            url: "/public/admin/spp/" + id + "/edit",
             method: "GET",
             success: function(response) {
                 $("#editModal").modal("show")
@@ -105,7 +105,7 @@
         e.preventDefault()
         var id = $("#id_edit").val()
         $.ajax({
-            url: "/admin/spp/" + id,
+            url: "/public/admin/spp/" + id,
             method: "PATCH",
             data: $(this).serialize(),
             success: function(response) {
@@ -147,7 +147,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "/admin/spp/" + id,
+                    url: "/public/admin/spp/" + id,
                     method: "DELETE",
                     success: function(response) {
                         $('#dataTable2').DataTable().ajax.reload()

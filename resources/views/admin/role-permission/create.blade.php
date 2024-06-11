@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">
                     <a href="{{ route('role-permission.index') }}" class="btn btn-danger btn-sm">
-                        <i class="fas fa-window-close fa-fw"></i> BACK TO LIST
+                        <i class="fas fa-arrow-left fa-fw"></i> KEMBALI
                     </a>
                     <a href="javascript:void(0)" class="btn btn-primary btn-sm">
                         <i class="fas fa-user-tie fa-fw"></i> ROLE : {{ $role->name }}

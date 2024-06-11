@@ -63,7 +63,7 @@
     $("body").on("click", ".btn-edit", function() {
         var id = $(this).attr("id")
         $.ajax({
-            url: "/admin/roles/" + id + "/edit",
+            url: "/public/admin/roles/" + id + "/edit",
             method: "GET",
             success: function(response) {
                 $("#id_edit").val(response.data.id)
@@ -78,7 +78,7 @@
         e.preventDefault()
         var id = $("#id_edit").val()
         $.ajax({
-            url: "/admin/roles/" + id,
+            url: "/public/admin/roles/" + id,
             method: "PATCH",
             data: $(this).serialize(),
             success: function(response) {
@@ -112,7 +112,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "/admin/roles/" + id,
+                    url: "/public/admin/roles/" + id,
                     method: "DELETE",
                     success: function(response) {
                         $('#dataTable2').DataTable().ajax.reload()

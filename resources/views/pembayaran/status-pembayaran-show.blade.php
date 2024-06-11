@@ -95,13 +95,11 @@
                                         <td>{{ $value['nama_bulan'] }}</td>
                                         <td>
                                             @if (Universe::statusPembayaran($siswa->id, $spp->tahun, $value['nama_bulan']) == 'DIBAYAR')
-                                                <a href="javascript:(0)" class="btn btn-success btn-sm"><i
-                                                        class=""></i>
+                                                <a href="javascript:(0)"><i class=""></i>
                                                     {{ Universe::statusPembayaran($siswa->id, $spp->tahun, $value['nama_bulan']) }}
                                                 </a>
                                             @else
-                                                <a href="javascript:(0)" class="btn btn-danger btn-sm"><i
-                                                        class=""></i>
+                                                <a href="javascript:(0)"><i class=""></i>
                                                     {{ Universe::statusPembayaran($siswa->id, $spp->tahun, $value['nama_bulan']) }}
                                                 </a>
                                             @endif

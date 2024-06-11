@@ -262,6 +262,7 @@ class PembayaranController extends Controller
 
         $data['pembayaran'] = Pembayaran::with(['petugas', 'siswa'])
             ->whereBetween('tanggal_bayar', $tanggal)->get();
+        $data['total'] = Pembayaran::whereBetween('tanggal_bayar', $tanggal)->sum('jumlah_bayar');
 
         if ($data['pembayaran']->count() > 0) {
             $pdf = PDF::loadView('pembayaran.laporan-preview', $data);

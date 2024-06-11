@@ -174,7 +174,7 @@
                             class="nav-link {{ Request::segment(2) == 'history-pembayaran' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-history"></i>
                             <p>
-                                History Pembayaran
+                                Riwayat Pembayaran
                             </p>
                         </a>
                     </li>
@@ -196,7 +196,7 @@
                             class="nav-link {{ Request::segment(2) == 'history-pembayaran' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-history"></i>
                             <p>
-                                History Pembayaran
+                                Riwayat Pembayaran
                             </p>
                         </a>
                     </li>
@@ -227,7 +227,7 @@
                             class="nav-link {{ Request::is('siswa/history-pembayaran') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-history"></i>
                             <p>
-                                History Pembayaran
+                                Riwayat Pembayaran
                             </p>
                         </a>
                     </li>

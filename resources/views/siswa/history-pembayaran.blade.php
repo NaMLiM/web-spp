@@ -1,5 +1,5 @@
 @extends('layouts.backend.app')
-@section('title', 'Data History Pembayaran')
+@section('title', 'Data Riwayat Pembayaran')
 @push('css')
     <!-- DataTables -->
     <link rel="stylesheet"
@@ -7,7 +7,7 @@
     <link rel="stylesheet"
         href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 @endpush
-@section('content_title', 'History Pembayaran')
+@section('content_title', 'Riwayat Pembayaran')
 @section('content')
     <x-alert></x-alert>
     <div class="row">

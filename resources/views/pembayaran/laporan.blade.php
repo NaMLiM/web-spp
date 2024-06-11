@@ -40,14 +40,14 @@
             var tanggal_selesai = $("#tanggal_selesai").val()
 
             $.ajax({
-                url: "/pembayaran/laporan/preview-pdf",
+                url: "/public/pembayaran/laporan/preview-pdf",
                 method: "GET",
                 data: {
                     tanggal_mulai: tanggal_mulai,
                     tanggal_selesai: tanggal_selesai,
                 },
                 success: function() {
-                    window.open('/pembayaran/laporan/preview-pdf')
+                    window.open('/public/pembayaran/laporan/preview-pdf')
                 }
             })
         })

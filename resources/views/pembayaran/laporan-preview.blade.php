@@ -8,7 +8,7 @@
     <body>
         <br><br>
         <center>
-            <h2 style="font-family: sans-serif;">Laporan Pembayaran Spp</h2>
+            <h2 style="font-family: sans-serif;">Laporan Pembayaran SPP</h2>
         </center>
         <br>
         <b>Dari tanggal {{ \Carbon\Carbon::parse(request()->tanggal_mulai)->format('d-m-Y') }} -
@@ -18,7 +18,7 @@
                 <tr>
                     <th scope="col" style="font-family: sans-serif;">No</th>
                     <th scope="col" style="font-family: sans-serif;">Nama Siswa</th>
-                    <th scope="col" style="font-family: sans-serif;">Nisn</th>
+                    <th scope="col" style="font-family: sans-serif;">NISN</th>
                     <th scope="col" style="font-family: sans-serif;">Kelas</th>
                     <th scope="col" style="font-family: sans-serif;">Tanggal Bayar</th>
                     <th scope="col" style="font-family: sans-serif;">Petugas</th>
@@ -41,6 +41,7 @@
                 @endforeach
             </tbody>
         </table>
+        <p>Total: Rp.<b>{{ $total }}</b></p>
     </body>
 
 </html>
