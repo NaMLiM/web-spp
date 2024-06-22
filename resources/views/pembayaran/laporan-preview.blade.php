@@ -39,9 +39,16 @@
                         <td style="font-family: sans-serif;">{{ $row->jumlah_bayar }}</td>
                     </tr>
                 @endforeach
+                <tr>
+                    <td colspan="6" style="font-family: sans-serif;">
+                        Total
+                    </td>
+                    <td style="font-family: sans-serif;">
+                        Rp. <b>{{ $total }}</b>
+                    </td>
+                </tr>
             </tbody>
         </table>
-        <p>Total: Rp.<b>{{ $total }}</b></p>
     </body>
 
 </html>

@@ -49,7 +49,8 @@
                                         <td>{{ $row->tahun_bayar }}</td>
                                         <td>{{ $row->jumlah_bayar }}</td>
                                         <td>
-                                            <a href="javascript:(0)" class="btn btn-success btn-sm"><i class=""></i>
+                                            <a href="javascript:(0)" class="btn btn-success btn-sm"
+                                                style="pointer-events: none;"><i class=""></i>
                                                 DIBAYAR</a>
                                         </td>
                                     </tr>
@@ -75,7 +76,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">
+                    <a href="javascript:void(0)" class="btn btn-primary btn-sm" style="pointer-events: none;">
                         <i class="fas fa-fw fa-circle"></i> STATUS PEMBAYARAN
                     </a>
                 </div>
@@ -95,11 +96,13 @@
                                         <td>{{ $value['nama_bulan'] }}</td>
                                         <td>
                                             @if (Universe::statusPembayaran($siswa->id, $spp->tahun, $value['nama_bulan']) == 'DIBAYAR')
-                                                <a href="javascript:(0)"><i class=""></i>
+                                                <a href="javascript:(0)" class="btn btn-success btn-sm"
+                                                    style="pointer-events: none;">
                                                     {{ Universe::statusPembayaran($siswa->id, $spp->tahun, $value['nama_bulan']) }}
                                                 </a>
                                             @else
-                                                <a href="javascript:(0)"><i class=""></i>
+                                                <a href="javascript:(0)" class="btn btn-danger btn-sm"
+                                                    style="pointer-events: none;">
                                                     {{ Universe::statusPembayaran($siswa->id, $spp->tahun, $value['nama_bulan']) }}
                                                 </a>
                                             @endif

@@ -23,10 +23,12 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">
+                    <a href="javascript:void(0)" class="btn btn-primary btn-sm"
+                        style="pointer-events: none; text-decoration: none;">
                         <i class="fas fa-circle fa-fw"></i> PILIH TAHUN
                     </a>
-                    <a href="{{ route('pembayaran.status-pembayaran') }}" class="btn btn-danger btn-sm">
+                    <a href="{{ route('pembayaran.status-pembayaran') }}" class="btn btn-danger btn-sm"
+                        style="float: right;">
                         <i class="fas fa-arrow-left fa-fw"></i> KEMBALI
                     </a>
                 </div>
