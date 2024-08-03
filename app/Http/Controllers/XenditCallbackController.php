@@ -31,17 +31,19 @@ class XenditCallbackController extends Controller
         if ($response->event == "payment.failed") {
             $webhook = new Webhook();
             $webhook->webhook_id = json_encode($request->header('webhook-id'));
-            $webhook->webhook_provider = 'Xendit';
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
-            $invoice = Invoice::where('kode_pembayaran', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
-            $invoice->update(['status' => 'FAILED']);
-            return response('Pembayaran Gagal', 200);
+            $invoice = Invoice::where('nomer_pembayaran', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
+            if ($invoice) {
+                $invoice->update(['status' => 'FAILED']);
+                return response('Pembayaran Gagal', 200);
+            } else {
+                return response('Invoice Tidak Ditemukan', 500);
+            }
         } elseif ($response->event == "payment.succeeded") {
             $webhook = new Webhook();
             $webhook->webhook_id = json_encode($request->header('webhook-id'));
-            $webhook->webhook_provider = 'Xendit';
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
@@ -71,7 +73,6 @@ class XenditCallbackController extends Controller
         } elseif ($response->event == "payment_method.expired") {
             $webhook = new Webhook();
             $webhook->webhook_id = json_encode($request->header('webhook-id'));
-            $webhook->webhook_provider = 'Xendit';
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
@@ -90,7 +91,6 @@ class XenditCallbackController extends Controller
         } elseif ($response->event == "payment_method.activated") {
             $webhook = new Webhook();
             $webhook->webhook_id = json_encode($request->header('webhook-id'));
-            $webhook->webhook_provider = 'Xendit';
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();

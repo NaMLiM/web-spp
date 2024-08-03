@@ -151,7 +151,18 @@ class PembayaranController extends Controller
                 $totalBayar += $request->jumlah_bayar;
             }
             $createInvoice = $xendit->createPembayaran($invoiceId, $totalBayar, $request->metode_pembayaran);
-            if ($createInvoice) {
+            if ($createInvoice['success'] == true) {
+                $invoice = new Invoice();
+                $invoice->invoice = $invoiceId;
+                $invoice->jumlah_bayar = $createInvoice['amount'];
+                $invoice->metode_pembayaran = $request->metode_pembayaran;
+                $invoice->status = 'Pending';
+                if ($request->metode_pembayaran == "DANA") {
+                } else {
+                    $invoice->nomer_pembayaran = $createInvoice['payment_number'];
+                }
+                $invoice->log = json_encode($createInvoice);
+                $invoice->saveQuietly();
                 return redirect()->route('siswa.invoice', $invoiceId)
                     ->with('success', 'Pembayaran berhasil dibuat!');
             }

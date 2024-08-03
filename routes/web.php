@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/kirimEmailTest', 'EmailTest@index');
+Route::post('/callback/xendit', 'XenditCallbackController@handle');
 Route::get('/', function () {
     return view('auth.login');
 })->middleware(['guest']);
