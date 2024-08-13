@@ -14,7 +14,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('siswa.proses-bayar', $siswa->nisn) }}" class="btn btn-primary btn-sm">
+                    <a href="{{ route('siswa.bayar', $siswa->nisn) }}" class="btn btn-primary btn-sm">
                         <i class="fas fa-fw fa-money-bill"></i> Bayar
                     </a>
                 </div>

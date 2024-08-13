@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use App\Models\Webhook;
 use App\Models\Invoice;
+use App\Models\Pembayaran;
+use App\Models\Spp;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 
@@ -34,7 +37,7 @@ class XenditCallbackController extends Controller
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
-            $invoice = Invoice::where('nomer_pembayaran', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
+            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Pending')->first();
             if ($invoice) {
                 $invoice->update(['status' => 'FAILED']);
                 return response('Pembayaran Gagal', 200);
@@ -47,14 +50,26 @@ class XenditCallbackController extends Controller
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
-            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
+            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Pending')->first();
             if (!$invoice) {
                 return response('Invoice Tidak ditemukan / Sudah lunas', 200);
             }
             switch ($response->data->status) {
                 case 'SUCCEEDED':
                     $invoice->update(['status' => 'PAID']);
-                    Mail::to('')->send(new InvoiceMail($response));
+                    $jumlah_bayar = Spp::where('tahun', $invoice->tahun_bayar)->pluck('nominal')->first();
+                    foreach (unserialize($invoice->bulan_bayar) as $bulan) {
+                        Pembayaran::create([
+                            'kode_pembayaran' => $invoice->invoice,
+                            'petugas_id' => 1,
+                            'siswa_id' => $invoice->siswa_id,
+                            'nisn' => $invoice->nisn,
+                            'tanggal_bayar' => Carbon::now('Asia/Jakarta'),
+                            'tahun_bayar' => $invoice->tahun_bayar,
+                            'bulan_bayar' => $bulan,
+                            'jumlah_bayar' => $jumlah_bayar,
+                        ]);
+                    }
                     return response("Sukses", 200);
                 case 'SETTLING':
                     $invoice->update(['status' => 'PENDING']);
@@ -76,7 +91,7 @@ class XenditCallbackController extends Controller
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
-            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
+            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Pending')->first();
             if ($invoice) {
                 $time = $invoice->created_at->addHour();
                 if (now() >= $time) {

@@ -20,9 +20,8 @@
                 </div>
                 <div class="card-body">
                     @if (Request::segment(2) == 'pembayaran-spp')
-                        <form method="POST" action="{{ route('siswa.proses-bayar', $siswa->nisn) }}">
-                        @else
-                            <form method="POST" action="{{ route('pembayaran.proses-bayar', $siswa->nisn) }}">
+                    @else
+                        <form method="POST" action="{{ route('pembayaran.proses-bayar', $siswa->nisn) }}">
                     @endif
                     @csrf
                     <div class="row">
@@ -125,11 +124,20 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-save fa-fw"></i>
-                            KONFIRMASI
-                        </button>
+                        @if (Request::segment(2) == 'pembayaran-spp')
+                            <button id="btn-bayar" class="btn btn-primary"><i class="fas fa-save fa-fw"></i>
+                                KONFIRMASI
+                            </button>
+                        @else
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save fa-fw"></i>
+                                KONFIRMASI
+                            </button>
+                        @endif
                     </div>
-                    </form>
+                    @if (Request::segment(2) == 'pembayaran-spp')
+                    @else
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
@@ -175,7 +183,6 @@
             var total_bulan = bulan.length
             var total_bayar = $("#jumlah_bayar").val()
             var hasil_bayar = (total_bulan * total_bayar)
-
             var formatter = new Intl.NumberFormat('ID', {
                 style: 'currency',
                 currency: 'idr',
@@ -183,5 +190,67 @@
 
             $("#total_bayar").val(formatter.format(hasil_bayar))
         })
+    </script>
+    <script>
+        function isMobile() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            // Deteksi perangkat Android
+            if (/android|iPad|iPhone|iPod/i.test(userAgent)) {
+                return true;
+            }
+            return false;
+        }
+        $("#btn-bayar").on("click", function() {
+            var nisn = $("#nisn").val();
+            var jumlah = $("#jumlah_bayar").val();
+            var siswa_id = $("#siswa_id").val();
+            var bulan_bayar = $("#bulan_bayar").val();
+            var tahun_bayar = $("#tahun_bayar").val();
+            var metode_pembayaran = $("#metode_pembayaran").val();
+            $.ajax({
+                url: "{{ route('siswa.proses-bayar', $siswa->nisn) }}",
+                dataType: "JSON",
+                type: "POST",
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'nisn': nisn,
+                    'jumlah_bayar': jumlah,
+                    'siswa_id': siswa_id,
+                    'metode_pembayaran': metode_pembayaran,
+                    'tahun_bayar': tahun_bayar,
+                    'bulan_bayar': bulan_bayar
+                },
+                success: function(resOrder) {
+                    if (resOrder.status) {
+                        if (!resOrder.redirect_url) {
+                            window.location =
+                                `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
+                        } else {
+                            if (resOrder.method == "OVO") {
+                                window.location =
+                                    `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
+                            } else if (resOrder.method == 'SHOPEEPAY') {
+                                if (isMobile()) {
+                                    window.location = resOrder.redirect_url[0].url;
+                                } else {
+                                    window.location =
+                                        `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
+                                }
+                            } else if (resOrder.method != "SHOPEEPAY") {
+                                if (!isMobile()) {
+                                    window.location = resOrder.redirect_url[0].url;
+                                } else {
+                                    window.location = resOrder.redirect_url[1].url;
+                                }
+                            } else {
+                                window.location =
+                                    `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
+                            }
+                        }
+
+                    }
+                }
+            });
+        });
     </script>
 @endpush

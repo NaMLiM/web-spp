@@ -35,7 +35,7 @@ class XenditController extends Controller
                 'ewallet' => [
                     'channel_code' => $metode_pembayaran,
                     'channel_properties' => [
-                        'success_return_url' => 'https://namlim-store.com/pembelian/invoice/' . $invoice_id
+                        'success_return_url' => 'https://smk.namlim-store.com/public/siswa/pembayaran-spp/invoice/' . $invoice_id
                     ],
                 ]
             ];

@@ -9,5 +9,5 @@ class Invoice extends Model
 {
     use HasFactory;
     protected $table = 'invoice';
-    protected $fillable = ['invoice','jumlah_bayar','status','log'];
+    protected $fillable = ['invoice', 'siswa_id', 'jumlah_bayar', 'metode_pembayaran', 'nomer_pembayaran', 'bulan_bayar', 'tahun_baya', 'log', 'status'];
 }

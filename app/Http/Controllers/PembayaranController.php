@@ -85,7 +85,7 @@ class PembayaranController extends Controller
         ]);
     }
 
-    public function prosesBayar(Request $request, $nisn)
+    public function prosesBayar(Request $request)
     {
         $request->validate([
             'jumlah_bayar' => 'required',
@@ -127,7 +127,7 @@ class PembayaranController extends Controller
         }
     }
 
-    public function prosesBayarSiswa(Request $request, $nisn)
+    public function prosesBayarSiswa(Request $request)
     {
         $xendit = new XenditController();
         $request->validate([
@@ -139,8 +139,7 @@ class PembayaranController extends Controller
         $pembayaran = Pembayaran::whereIn('bulan_bayar', $request->bulan_bayar)
             ->where('tahun_bayar', $request->tahun_bayar)
             ->where('siswa_id', $request->siswa_id)
-            ->pluck('bulan_bayar')
-            ->toArray();
+            ->exists();
 
         if (!$pembayaran) {
             $unik = date('Hs');
@@ -154,23 +153,35 @@ class PembayaranController extends Controller
             if ($createInvoice['success'] == true) {
                 $invoice = new Invoice();
                 $invoice->invoice = $invoiceId;
+                $invoice->siswa_id = $request->siswa_id;
+                $invoice->nisn = $request->nisn;
                 $invoice->jumlah_bayar = $createInvoice['amount'];
                 $invoice->metode_pembayaran = $request->metode_pembayaran;
-                $invoice->status = 'Pending';
-                if ($request->metode_pembayaran == "DANA") {
-                } else {
+                $invoice->bulan_bayar = serialize($request->bulan_bayar);
+                $invoice->tahun_bayar = $request->tahun_bayar;
+                $invoice->status = 'Belum Lunas';
+                if (isset($createInvoice['payment_number'])) {
                     $invoice->nomer_pembayaran = $createInvoice['payment_number'];
                 }
                 $invoice->log = json_encode($createInvoice);
                 $invoice->saveQuietly();
-                return redirect()->route('siswa.invoice', $invoiceId)
-                    ->with('success', 'Pembayaran berhasil dibuat!');
+                if (isset($createInvoice['actions'])) {
+                    $redirect = $createInvoice['actions'];
+                }
+                return response()->json([
+                    'status' => true,
+                    'invoice_id' => $invoiceId,
+                    'method' => $request->metode_pembayaran,
+                    'redirect_url' => isset($redirect) ? $redirect : null
+                ]);
+            } else {
+                return response()->json(['status' => false]);
             }
         } else {
-            return back()
-                ->with('error', 'Siswa Dengan Nama : ' . $request->nama_siswa . ' , NISN : ' .
-                    $request->nisn . ' Sudah Membayar SPP di bulan yang diinput (' .
-                    implode(',', $pembayaran) . ")" . ' , di Tahun : ' . $request->tahun_bayar . ' , Pembayaran Dibatalkan');
+            return response()->json(['status' => false]);
+            // return back()
+            //     ->with('error', 'Siswa Dengan Nama : ' . $request->nama_siswa . ', NISN : ' .
+            //         $request->nisn . ' Sudah Membayar SPP di bulan yang diinput, Pembayaran Dibatalkan');
         }
     }
 

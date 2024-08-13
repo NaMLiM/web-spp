@@ -27,9 +27,9 @@
                     </ul>
                 </div>
             @endif
-            @if ($data->status == 'Terbayar')
+            @if ($data->status == 'PAID')
                 <div class="alert alert-success">
-                    <b>Terima kasih telah berbelanja di NaMLiM Store</b><br> Semoga sukses dan sehat selalu.
+                    <b>Terima kasih telah Melakukan Pembayaran SPP</b><br> Semoga sukses dan sehat selalu.
                 </div>
             @elseif($data->status == 'Gagal')
                 <div class="alert alert-danger">
@@ -95,7 +95,7 @@
                                     <b class="text-info" id="status-pembayaran">Sedang Diproses</b>
                                 @elseif($data->status == 'Gagal')
                                     <b class="text-danger" id="status-pembayaran">Pembayaran Batal</b>
-                                @elseif($data->status == 'Terbayar')
+                                @elseif($data->status == 'PAID')
                                     <b class="text-success" id="status-pembayaran">Pembayaran Berhasil</b>
                                 @endif
                             </div>
@@ -143,7 +143,7 @@
         $('.select2bs4').select2({
             theme: 'bootstrap4'
         })
-        var pembelian = document.getElementById("status-pembelian").innerHTML;
+        var pembelian = document.getElementById("status-pembayaran").innerHTML;
         if (pembelian == "Pending") {
             setTimeout(() => {
                 document.location.reload();
