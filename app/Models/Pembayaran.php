@@ -15,14 +15,14 @@ class Pembayaran extends Model
     protected $table = 'pembayaran';
 
     protected $fillable = [
-    	'kode_pembayaran',
-    	'petugas_id',
+        'kode_pembayaran',
+        'petugas_id',
         'siswa_id',
-    	'nisn',
-    	'tanggal_bayar',
-    	'bulan_bayar',
-    	'tahun_bayar',
-    	'jumlah_bayar',
+        'nisn',
+        'tanggal_bayar',
+        'bulan_bayar',
+        'tahun_bayar',
+        'jumlah_bayar',
     ];
 
     public function getTanggalBayarAttribute($value)
@@ -32,9 +32,15 @@ class Pembayaran extends Model
 
     public function getJumlahBayarAttribute($value)
     {
-        return "Rp ".number_format($value, 0, 2, '.');
+        return "Rp " . number_format($value, 0, 2, '.');
     }
-
+    public function scopeLast12Months($query)
+    {
+        $twelveMonthsAgo = now()->subMonths(12);
+        return $query->selectRaw('MONTH(created_at) as month, COUNT(*) as total')
+            ->whereBetween('created_at', [$twelveMonthsAgo, now()])
+            ->groupBy('month');
+    }
     public function petugas()
     {
         return $this->belongsTo(Petugas::class);

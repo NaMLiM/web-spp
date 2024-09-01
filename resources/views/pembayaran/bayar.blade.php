@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet"
         href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.css">
 @endpush
 @section('content_title', 'Tambah Pembayaran')
 @section('content')
@@ -146,6 +148,8 @@
 @push('js')
     <!-- Select2 -->
     <script src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/select2/js/select2.full.min.js"></script>
+    <script type="text/javascript"
+        src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script>
         //Initialize Select2 Elements
         $('.select2').select2()
@@ -247,7 +251,12 @@
                                     `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
                             }
                         }
-
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Sudah Lunas.',
+                            text: 'Anda Sudah Melunasi Pembayaran Bulan Yang Diinput!'
+                        });
                     }
                 }
             });

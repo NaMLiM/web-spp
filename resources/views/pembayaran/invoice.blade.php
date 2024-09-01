@@ -37,7 +37,7 @@
                 </div>
             @else
                 <div class="alert alert-info">
-                    <b>Harap Dibayar Sebelum Pembayaran Expired.</b><br> Segera lakukan pembayaran sesuai dengan kode bayar
+                    <b>Pembayaran.</b><br> Segera lakukan pembayaran sesuai dengan kode bayar
                     /
                     nomor VA yang tercantum. Pastikan nominal pembayaran juga sesuai dengan total bayar.
                 </div>
@@ -70,10 +70,6 @@
                                 <b class="">{{ $data->created_at }}</b>
                             </div>
                             <div class="mt-2">
-                                <span class="d-block">Batas Pembayaran</span>
-                                <b class="">NULL</b>
-                            </div>
-                            <div class="mt-2">
                                 <span class="d-block">Nomor Pesanan</span>
                                 <b class="">{{ $data->invoice }}</b>
                             </div>
@@ -81,12 +77,16 @@
                                 <span class="d-block">Metode Pembayaran</span>
                                 <b class="text-info">{{ $data->metode_pembayaran }}</b>
                             </div>
-                            @if (!empty($data->no_pembayaran) && ($data->metode_pembayaran != 'QRIS' && $data->metode_pembayaran != 'SHOPEEPAY'))
+                            @if (!empty($data->nomer_pembayaran) && ($data->metode_pembayaran != 'QRIS' && $data->metode_pembayaran != 'SHOPEEPAY'))
                                 <div class="mt-2">
                                     <span class="d-block">Kode Bayar / Nomor VA</span>
-                                    <b class="text-danger">{{ $data->no_pembayaran }}</b>
+                                    <b class="text-danger">{{ $data->nomer_pembayaran }}</b>
                                 </div>
                             @endif
+                            <div class="mt-2">
+                                <span class="d-block">Jumlah Pembayaran</span>
+                                <b class="">Rp. {{ number_format($data->jumlah_bayar, 2, '.', ',') }}</b>
+                            </div>
                             <div class="mt-2">
                                 <span class="d-block">Status Pembayaran</span>
                                 @if ($data->status == 'Belum Lunas')
@@ -144,7 +144,7 @@
             theme: 'bootstrap4'
         })
         var pembelian = document.getElementById("status-pembayaran").innerHTML;
-        if (pembelian == "Pending") {
+        if (pembelian == "Menunggu Pembayaran") {
             setTimeout(() => {
                 document.location.reload();
             }, 5000);

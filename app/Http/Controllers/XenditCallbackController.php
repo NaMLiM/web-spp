@@ -37,7 +37,7 @@ class XenditCallbackController extends Controller
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
-            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Pending')->first();
+            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
             if ($invoice) {
                 $invoice->update(['status' => 'FAILED']);
                 return response('Pembayaran Gagal', 200);
@@ -50,7 +50,7 @@ class XenditCallbackController extends Controller
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
-            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Pending')->first();
+            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
             if (!$invoice) {
                 return response('Invoice Tidak ditemukan / Sudah lunas', 200);
             }
@@ -91,7 +91,7 @@ class XenditCallbackController extends Controller
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
-            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Pending')->first();
+            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
             if ($invoice) {
                 $time = $invoice->created_at->addHour();
                 if (now() >= $time) {

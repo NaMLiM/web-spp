@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home.index');
+    Route::get('/data', [HomeController::class, 'getTransactionsPerMonth'])->name('data');
+
     Route::get('spp/{tahun}', 'PembayaranController@spp')->name('pembayaran.spp');
 });
 
@@ -80,8 +83,6 @@ Route::prefix('admin')
             Route::resource('pembayaran-spp', 'PembayaranController');
             Route::resource('kelas', 'KelasController');
             Route::resource('siswa', 'SiswaController');
-            Route::delete('delete-all-siswa', 'CheckBoxDeleteController@deleteAllSiswa')
-                ->name('delete-all-siswa');
         });
     });
 

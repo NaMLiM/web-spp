@@ -12,7 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use PDF;
+use Barryvdh\DomPDF\PDF;
 use Yajra\DataTables\DataTables;
 use App\DataTables\KelasPembayaranDataTable;
 
@@ -116,7 +116,6 @@ class PembayaranController extends Controller
                     ]);
                 }
             });
-
             return redirect()->route('pembayaran.history-pembayaran')
                 ->with('success', 'Pembayaran berhasil disimpan!');
         } else {
@@ -179,9 +178,6 @@ class PembayaranController extends Controller
             }
         } else {
             return response()->json(['status' => false]);
-            // return back()
-            //     ->with('error', 'Siswa Dengan Nama : ' . $request->nama_siswa . ', NISN : ' .
-            //         $request->nisn . ' Sudah Membayar SPP di bulan yang diinput, Pembayaran Dibatalkan');
         }
     }
 
