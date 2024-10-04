@@ -148,7 +148,7 @@ class PembayaranController extends Controller
             foreach ($request->bulan_bayar as $bulan) {
                 $totalBayar += $request->jumlah_bayar;
             }
-            $createInvoice = $xendit->createPembayaran($invoiceId, $totalBayar, $request->metode_pembayaran);
+            $createInvoice = $xendit->createPembayaran($invoiceId, $totalBayar, $request->metode_pembayaran, Auth::user()->email);
             if ($createInvoice['success'] == true) {
                 $invoice = new Invoice();
                 $invoice->invoice = $invoiceId;

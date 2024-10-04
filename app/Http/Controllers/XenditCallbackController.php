@@ -70,6 +70,7 @@ class XenditCallbackController extends Controller
                             'jumlah_bayar' => $jumlah_bayar,
                         ]);
                     }
+                    Mail::to($response->data->description)->send(new InvoiceMail());
                     return response("Sukses", 200);
                 case 'SETTLING':
                     $invoice->update(['status' => 'PENDING']);

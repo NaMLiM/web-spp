@@ -17,7 +17,7 @@ class XenditController extends Controller
         Configuration::setXenditKey($this->api_key);
     }
 
-    public function createPembayaran($invoice_id, $jumlah_bayar, $metode_pembayaran)
+    public function createPembayaran($invoice_id, $jumlah_bayar, $metode_pembayaran, $userEmail = null)
     {
         $apiInstance = new PaymentRequestApi();
         $param = [
@@ -25,7 +25,8 @@ class XenditController extends Controller
             'amount' => $jumlah_bayar,
             'reference_id' => $invoice_id,
             'country' => 'ID',
-            'payment_method' => null
+            'payment_method' => null,
+            'description' => $userEmail,
         ];
         if ($metode_pembayaran == "DANA") {
             $param['payment_method'] = [
@@ -35,7 +36,7 @@ class XenditController extends Controller
                 'ewallet' => [
                     'channel_code' => $metode_pembayaran,
                     'channel_properties' => [
-                        'success_return_url' => 'https://smk.namlim-store.com/public/siswa/pembayaran-spp/invoice/' . $invoice_id
+                        'success_return_url' => 'https://smk.namlim.my.id/public/siswa/pembayaran-spp/invoice/' . $invoice_id
                     ],
                 ]
             ];

@@ -16,7 +16,7 @@ class InvoiceMail extends Mailable
      *
      * @return void
      */
-    public function __construct(private $data)
+    public function __construct()
     {
         //
     }
@@ -28,6 +28,6 @@ class InvoiceMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.invoice-mail')->with('data', $this->data)->subject('Invoice Pembayaran kode_pembayaran');
+        return $this->view('mail.invoice-mail')->subject('Invoice Pembayaran kode_pembayaran');
     }
 }
