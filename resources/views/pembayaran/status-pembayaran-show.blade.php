@@ -27,7 +27,7 @@
                                     <th>No</th>
                                     <th>Nama Siswa</th>
                                     <th>Kelas</th>
-                                    <th>Nisn</th>
+                                    <th>NISN</th>
                                     <th>Tanggal Bayar</th>
                                     <th>Nama Petugas</th>
                                     <th>Untuk Bulan</th>
@@ -60,7 +60,7 @@
                     @else
                         <div class="alert alert-danger" role="alert">
                             <h4 class="alert-heading">Data Pembayaran Tidak Tersedia!</h4>
-                            <p>Pembayaran Spp {{ $siswa->nama_siswa }} di Tahun {{ $spp->tahun }} tidak tersedia.</p>
+                            <p>Pembayaran SPP {{ $siswa->nama_siswa }} di Tahun {{ $spp->tahun }} tidak tersedia.</p>
                         </div>
                     @endif
                 </div>
@@ -114,7 +114,7 @@
                     @else
                         <div class="alert alert-danger" role="alert">
                             <h4 class="alert-heading">Data Status Pembayaran Tidak Tersedia!</h4>
-                            <p>Status Pembayaran Spp {{ $siswa->nama_siswa }} di Tahun {{ $spp->tahun }} tidak tersedia.
+                            <p>Status Pembayaran SPP {{ $siswa->nama_siswa }} di Tahun {{ $spp->tahun }} tidak tersedia.
                             </p>
                         </div>
                     @endif

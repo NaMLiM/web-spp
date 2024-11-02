@@ -20,7 +20,7 @@
                 <tr>
                     <th style="font-family: sans-serif;">No</th>
                     <th style="font-family: sans-serif;">Nama Siswa</th>
-                    <th style="font-family: sans-serif;">Nisn</th>
+                    <th style="font-family: sans-serif;">NISN</th>
                     <th style="font-family: sans-serif;">Tanggal Bayar</th>
                     <th style="font-family: sans-serif;">Nama Petugas</th>
                     <th style="font-family: sans-serif;">Untuk Bulan</th>

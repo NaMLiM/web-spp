@@ -109,7 +109,6 @@
                                         class="form-control select2bs4">
                                         <option disabled="" selected="">- PILIH METODE -</option>
                                         <option value="BRI">Bank BRI</option>
-                                        <option value="BCA">Bank BCA</option>
                                         <option value="DANA">DANA</option>
                                     </select>
                                 </div>
@@ -161,7 +160,7 @@
                 url: "/spp/" + tahun,
                 method: "GET",
                 success: function(response) {
-                    $("#nominal_spp_label").html(`Nominal Spp Tahun ` + tahun + ':')
+                    $("#nominal_spp_label").html(`Nominal SPP Tahun ` + tahun + ':')
                     $("#nominal").val(response.nominal_rupiah)
                     $("#jumlah_bayar").val(response.data.nominal)
                 }

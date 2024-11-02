@@ -1,5 +1,5 @@
 @extends('layouts.backend.app')
-@section('title', 'Data Spp')
+@section('title', 'Data SPP')
 @push('css')
     <!-- DataTables -->
     <link rel="stylesheet"
@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.css">
 @endpush
-@section('content_title', 'Data Spp')
+@section('content_title', 'Data SPP')
 @section('content')
     <x-alert></x-alert>
     <div class="row">
@@ -120,7 +120,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save fa-fw"></i> UPDATE
+                            <i class="fas fa-save fa-fw"></i> Perbarui
                         </button>
                     </div>
                 </form>

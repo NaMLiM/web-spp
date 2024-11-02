@@ -19,7 +19,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Siswa</th>
-                                <th>Nisn</th>
+                                <th>NISN</th>
                                 <th>Kelas</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Detail</th>

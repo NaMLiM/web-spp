@@ -233,7 +233,7 @@
                     </li>
                 @endrole
 
-                @role('admin')
+                {{-- @role('admin')
                     <li class="nav-header">ROLES - PERMISSIONS</li>
                     <li class="nav-item">
                         <a href="{{ route('roles.index') }}"
@@ -280,7 +280,7 @@
                             </p>
                         </a>
                     </li>
-                @endrole
+                @endrole --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

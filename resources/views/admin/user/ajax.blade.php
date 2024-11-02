@@ -111,7 +111,7 @@
                     success: function() {
                         $('#dataTable2').DataTable().ajax.reload()
                         Swal.fire(
-                            'Delete',
+                            'Hapus',
                             'Data berhasil dihapus!',
                             'success'
                         )

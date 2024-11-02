@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
-@section('title', 'Pembayaran Spp ' . $siswa->nama_siswa)
-@section('content_title', 'Pembayaran Spp ' . $siswa->nama_siswa)
+@section('title', 'Pembayaran SPP ' . $siswa->nama_siswa)
+@section('content_title', 'Pembayaran SPP ' . $siswa->nama_siswa)
 @section('content')
     <div class="row">
         <div class="col-lg-6">
@@ -9,7 +9,7 @@
 
                 <p>
                     Nama Siswa : <b>{{ $siswa->nama_siswa }}</b><br>
-                    Nisn : <b>{{ $siswa->nisn }}</b><br>
+                    NISN : <b>{{ $siswa->nisn }}</b><br>
                     Kelas : <b>{{ $siswa->kelas->nama_kelas }}</b>
                 </p>
             </div>

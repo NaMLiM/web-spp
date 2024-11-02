@@ -31,7 +31,7 @@
                 <div class="alert alert-success">
                     <b>Terima kasih telah Melakukan Pembayaran SPP</b><br> Semoga sukses dan sehat selalu.
                 </div>
-            @elseif($data->status == 'Gagal')
+            @elseif($data->status == 'FAILED')
                 <div class="alert alert-danger">
                     <b>Pembayaran Gagal / Dibatalkan</b><br> Silahkan Coba Lagi.
                 </div>
@@ -68,6 +68,10 @@
                             <div>
                                 <span class="d-block">Tanggal Pembuatan Invoice</span>
                                 <b class="">{{ $data->created_at }}</b>
+                            </div>
+                            <div>
+                                <span class="d-block">Batas Waktu Pembayaran</span>
+                                <b class="">{{ Carbon\Carbon::parse($data->created_at)->addHour() }}</b>
                             </div>
                             <div class="mt-2">
                                 <span class="d-block">Nomor Pesanan</span>
@@ -166,7 +170,7 @@
                 url: "/spp/" + tahun,
                 method: "GET",
                 success: function(response) {
-                    $("#nominal_spp_label").html(`Nominal Spp Tahun ` + tahun + ':')
+                    $("#nominal_spp_label").html(`Nominal SPP Tahun ` + tahun + ':')
                     $("#nominal").val(response.nominal_rupiah)
                     $("#jumlah_bayar").val(response.data.nominal)
                 }

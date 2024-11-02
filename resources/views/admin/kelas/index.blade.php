@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save fa-fw"></i> SIMPAN
                         </button>
@@ -119,9 +119,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save fa-fw"></i> UPDATE
+                            <i class="fas fa-save fa-fw"></i> Perbarui
                         </button>
                     </div>
                 </form>

@@ -24,6 +24,7 @@
                     searchable: true
                 },
             ]
+
         });
     });
 

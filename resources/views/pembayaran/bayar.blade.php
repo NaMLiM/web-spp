@@ -107,18 +107,6 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label for="metode_pembayaran">Metode Pembayaran</label>
-                                <select required="" name="metode_pembayaran" id="metode_pembayaran"
-                                    class="form-control select2bs4">
-                                    <option disabled="" selected="">- PILIH METODE -</option>
-                                    <option value="BRI">Bank BRI</option>
-                                    <option value="BCA">Bank BCA</option>
-                                    <option value="DANA">DANA</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
                                 <label for="total_bayar">Total Bayar:</label>
                                 <input required="" type="" name="total_bayar" readonly="" id="total_bayar"
                                     class="form-control">

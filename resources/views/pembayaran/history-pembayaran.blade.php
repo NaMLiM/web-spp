@@ -24,7 +24,7 @@
                                 <th>No</th>
                                 <th>Nama Siswa</th>
                                 <th>Kelas</th>
-                                <th>Nisn</th>
+                                <th>NISN</th>
                                 <th>Tanggal Bayar</th>
                                 <th>Nama Petugas</th>
                                 <th>Untuk Bulan</th>

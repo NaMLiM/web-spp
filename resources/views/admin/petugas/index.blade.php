@@ -135,7 +135,7 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save fa-fw"></i>
-                            UPDATE
+                            Perbarui
                         </button>
                     </div>
                 </form>
