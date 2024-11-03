@@ -4,10 +4,10 @@ namespace App\Mail;
 
 use App\Models\Invoice;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Env;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
 
 class InvoiceMail extends Mailable
 {
@@ -26,8 +26,8 @@ class InvoiceMail extends Mailable
     {
 
         return new Envelope(
-            subject: 'Invoice Pembayaran'.$this->invoice->invoice,
-        )
+            subject: 'Invoice Pembayaran' . $this->invoice->invoice,
+        );
     }
     /**
      * Build the message.
