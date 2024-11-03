@@ -89,7 +89,7 @@ Route::prefix('admin')
 Route::prefix('siswa')
     ->middleware(['auth', 'role:siswa'])
     ->group(function () {
-        Route::get('pembayaran-spp/{nisn}', 'PembayaranController@bayar')->name('siswa.bayar');
+        Route::get('pembayaran-spp/{nisn}', 'PembayaranController@bayarSiswa')->name('siswa.bayar');
         Route::get('pembayaran-spp/invoice/{invoice}', 'PembayaranController@invoice')->name('siswa.invoice');
         Route::post('pembayaran-spp/{nisn}', 'PembayaranController@prosesBayarSiswa')->name('siswa.proses-bayar');
         Route::get('pembayaran-spp', 'SiswaController@pembayaranSpp')->name('siswa.pembayaran-spp');

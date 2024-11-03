@@ -73,7 +73,16 @@ class PembayaranController extends Controller
 
         return view('pembayaran.bayar', compact('siswa', 'spp'));
     }
+    public function bayarSiswa($nisn)
+    {
+        $siswa = Siswa::with(['kelas'])
+            ->where('nisn', $nisn)
+            ->first();
 
+        $spp = Spp::all();
+
+        return view('pembayaran.siswa-bayar', compact('siswa', 'spp'));
+    }
     public function spp($tahun)
     {
         $spp = Spp::where('tahun', $tahun)
