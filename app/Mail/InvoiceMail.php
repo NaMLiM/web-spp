@@ -18,7 +18,7 @@ class InvoiceMail extends Mailable
      *
      * @return void
      */
-    public function __construct(Invoice $invoice)
+    public function __construct($invoice)
     {
         $this->invoice = $invoice;
     }
@@ -41,4 +41,6 @@ class InvoiceMail extends Mailable
             view: 'mail.invoice-mail',
         );
     }
+
+    public function build() {}
 }
