@@ -12,35 +12,19 @@ use Illuminate\Mail\Mailables\Envelope;
 class InvoiceMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $invoice;
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($invoice)
+    public function __construct($data)
     {
-        $this->invoice = $invoice;
-    }
-    public function envelope()
-    {
-
-        return new Envelope(
-            subject: 'Invoice Pembayaran' . $this->invoice->invoice,
-        );
-    }
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function content()
-    {
-
-        return new Content(
-            view: 'mail.invoice-mail',
-        );
+        $this->data = $data;
     }
 
-    public function build() {}
+    public function build()
+    {
+        return $this->view('mail.invoice-mail')->subject('Invoice Pembayaran ' . $this->data->invoice);
+    }
 }
