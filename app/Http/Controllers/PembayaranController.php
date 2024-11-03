@@ -12,8 +12,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\PDF;
 use Yajra\DataTables\DataTables;
+use PDF;
 use App\DataTables\KelasPembayaranDataTable;
 
 class PembayaranController extends Controller

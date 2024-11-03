@@ -123,13 +123,4 @@
             </div>
         </div>
     </div>
-
-    <div class="col-lg-7">
-        <div class="callout callout-danger">
-            <h5>Pemberitahuan!</h5>
-            <p>Password default / Password bawaan dari WEB SPPR adalah : <b>sppr2021</b></p>
-        </div>
-    </div>
-
-    </div>
 @endsection

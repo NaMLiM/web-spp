@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Yajra\DataTables\Facades\DataTables;
-use Barryvdh\DomPDF\Facade as PDF;
+use PDF;
 
 class SiswaController extends Controller
 {

@@ -13,9 +13,9 @@
         <br>
         <b>Dari tanggal {{ \Carbon\Carbon::parse(request()->tanggal_mulai)->format('d-m-Y') }} -
             {{ \Carbon\Carbon::parse(request()->tanggal_selesai)->format('d-m-Y') }}</b><br><br>
-        <table style="" border="1" cellspacing="0" cellpadding="10" width="100%">
+        <table style="border-color: white" border="1" cellspacing="0" cellpadding="10" width="100%">
             <thead>
-                <tr>
+                <tr style="background-color: green">
                     <th scope="col" style="font-family: sans-serif;">No</th>
                     <th scope="col" style="font-family: sans-serif;">Nama Siswa</th>
                     <th scope="col" style="font-family: sans-serif;">NISN</th>
