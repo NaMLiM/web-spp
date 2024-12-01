@@ -70,7 +70,6 @@ class XenditCallbackController extends Controller
                             'jumlah_bayar' => $jumlah_bayar,
                         ]);
                     }
-                    Mail::to($response->data->description)->send(new InvoiceMail($invoice));
                     return response("Sukses", 200);
                 case 'SETTLING':
                     $invoice->update(['status' => 'PENDING']);
@@ -110,6 +109,8 @@ class XenditCallbackController extends Controller
             $webhook->webhook_event = json_encode($response->event);
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
+            $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
+            Mail::to($invoice->siswa->user->email)->send(new InvoiceMail($invoice));
             return response("Diterima", 200);
         }
     }

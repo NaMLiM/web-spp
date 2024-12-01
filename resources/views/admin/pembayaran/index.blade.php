@@ -146,7 +146,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "/admin/pembayaran-spp/" + id,
+                        url: "/public/admin/pembayaran-spp/" + id,
                         method: "DELETE",
                         success: function(response) {
                             $('#dataTable2').DataTable().ajax.reload()

@@ -141,122 +141,178 @@
             </div>
         </div>
     </div>
-@stop
-@push('js')
-    <!-- Select2 -->
-    <script src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/select2/js/select2.full.min.js"></script>
-    <script type="text/javascript"
-        src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.js"></script>
-    <script>
-        //Initialize Select2 Elements
-        $('.select2').select2()
+    <div class="row">
+        <div class="col-lg">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Tutorial</div>
+                </div>
+                <div class="card-body">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">
+                                        ATM</button>
+                                </h2>
+                            </div>
 
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        })
+                            <div id="collapseOne" class="show collapse" aria-labelledby="headingOne"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <ol>
+                                        <li>Pergi ke ATM</li>
+                                        <li> Gunakan kartu rekening BRI kamu</li>
+                                        <li> Setelah masukkan pin pilih transaksi</li>
+                                        <li>Masukkan nomor virtual account yang kamu dapatkan dari website/email kamu
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block collapsed text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        Aplikasi BRIMO</button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <ol>
+                                        <li>Buka Aplikasi BRIMO lalu Klik BRIVA</li>
+                                        <li>Pilih "Tambahkan Transaksi Baru"</li>
+                                        <li>Masukkan nomor virtual account yang kamu dapatkan dari website/email kamu
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @stop
+    @push('js')
+        <!-- Select2 -->
+        <script src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/select2/js/select2.full.min.js"></script>
+        <script type="text/javascript"
+            src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.js"></script>
+        <script>
+            //Initialize Select2 Elements
+            $('.select2').select2()
 
-        function rupiah(number) {
-            var formatter = new Intl.NumberFormat('ID', {
-                style: 'currency',
-                currency: 'idr',
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
             })
 
-            return formatter.format(number)
-        }
+            function rupiah(number) {
+                var formatter = new Intl.NumberFormat('ID', {
+                    style: 'currency',
+                    currency: 'idr',
+                })
 
-        $(document).on("change", "#tahun_bayar", function() {
-            var tahun = $(this).val()
-
-            $.ajax({
-                url: "/public/spp/" + tahun,
-                method: "GET",
-                success: function(response) {
-                    $("#nominal_spp_label").html(`Nominal SPP Tahun ` + tahun)
-                    $("#nominal").val(response.nominal_rupiah)
-                    $("#jumlah_bayar").val(response.data.nominal)
-                }
-            })
-        })
-
-        $(document).on("change", "#bulan_bayar", function() {
-            var bulan = $(this).val()
-            var total_bulan = bulan.length
-            var total_bayar = $("#jumlah_bayar").val()
-            var hasil_bayar = (total_bulan * total_bayar)
-            var formatter = new Intl.NumberFormat('ID', {
-                style: 'currency',
-                currency: 'idr',
-            })
-
-            $("#total_bayar").val(formatter.format(hasil_bayar))
-        })
-    </script>
-    <script>
-        function isMobile() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            // Deteksi perangkat Android
-            if (/android|iPad|iPhone|iPod/i.test(userAgent)) {
-                return true;
+                return formatter.format(number)
             }
-            return false;
-        }
-        $("#btn-bayar").on("click", function() {
-            var nisn = $("#nisn").val();
-            var jumlah = $("#jumlah_bayar").val();
-            var siswa_id = $("#siswa_id").val();
-            var bulan_bayar = $("#bulan_bayar").val();
-            var tahun_bayar = $("#tahun_bayar").val();
-            var metode_pembayaran = $("#metode_pembayaran").val();
-            $.ajax({
-                url: "{{ route('siswa.proses-bayar', $siswa->nisn) }}",
-                dataType: "JSON",
-                type: "POST",
-                data: {
-                    '_token': '<?php echo csrf_token(); ?>',
-                    'nisn': nisn,
-                    'jumlah_bayar': jumlah,
-                    'siswa_id': siswa_id,
-                    'metode_pembayaran': metode_pembayaran,
-                    'tahun_bayar': tahun_bayar,
-                    'bulan_bayar': bulan_bayar
-                },
-                success: function(resOrder) {
-                    if (resOrder.status) {
-                        if (!resOrder.redirect_url) {
-                            window.location =
-                                `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
-                        } else {
-                            if (resOrder.method == "OVO") {
+
+            $(document).on("change", "#tahun_bayar", function() {
+                var tahun = $(this).val()
+
+                $.ajax({
+                    url: "/public/spp/" + tahun,
+                    method: "GET",
+                    success: function(response) {
+                        $("#nominal_spp_label").html(`Nominal SPP Tahun ` + tahun)
+                        $("#nominal").val(response.nominal_rupiah)
+                        $("#jumlah_bayar").val(response.data.nominal)
+                    }
+                })
+            })
+
+            $(document).on("change", "#bulan_bayar", function() {
+                var bulan = $(this).val()
+                var total_bulan = bulan.length
+                var total_bayar = $("#jumlah_bayar").val()
+                var hasil_bayar = (total_bulan * total_bayar)
+                var formatter = new Intl.NumberFormat('ID', {
+                    style: 'currency',
+                    currency: 'idr',
+                })
+
+                $("#total_bayar").val(formatter.format(hasil_bayar))
+            })
+        </script>
+        <script>
+            function isMobile() {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                // Deteksi perangkat Android
+                if (/android|iPad|iPhone|iPod/i.test(userAgent)) {
+                    return true;
+                }
+                return false;
+            }
+            $("#btn-bayar").on("click", function() {
+                var nisn = $("#nisn").val();
+                var jumlah = $("#jumlah_bayar").val();
+                var siswa_id = $("#siswa_id").val();
+                var bulan_bayar = $("#bulan_bayar").val();
+                var tahun_bayar = $("#tahun_bayar").val();
+                var metode_pembayaran = $("#metode_pembayaran").val();
+                $.ajax({
+                    url: "{{ route('siswa.proses-bayar', $siswa->nisn) }}",
+                    dataType: "JSON",
+                    type: "POST",
+                    data: {
+                        '_token': '<?php echo csrf_token(); ?>',
+                        'nisn': nisn,
+                        'jumlah_bayar': jumlah,
+                        'siswa_id': siswa_id,
+                        'metode_pembayaran': metode_pembayaran,
+                        'tahun_bayar': tahun_bayar,
+                        'bulan_bayar': bulan_bayar
+                    },
+                    success: function(resOrder) {
+                        if (resOrder.status) {
+                            if (!resOrder.redirect_url) {
                                 window.location =
                                     `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
-                            } else if (resOrder.method == 'SHOPEEPAY') {
-                                if (isMobile()) {
-                                    window.location = resOrder.redirect_url[0].url;
+                            } else {
+                                if (resOrder.method == "OVO") {
+                                    window.location =
+                                        `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
+                                } else if (resOrder.method == 'SHOPEEPAY') {
+                                    if (isMobile()) {
+                                        window.location = resOrder.redirect_url[0].url;
+                                    } else {
+                                        window.location =
+                                            `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
+                                    }
+                                } else if (resOrder.method != "SHOPEEPAY") {
+                                    if (!isMobile()) {
+                                        window.location = resOrder.redirect_url[0].url;
+                                    } else {
+                                        window.location = resOrder.redirect_url[1].url;
+                                    }
                                 } else {
                                     window.location =
                                         `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
                                 }
-                            } else if (resOrder.method != "SHOPEEPAY") {
-                                if (!isMobile()) {
-                                    window.location = resOrder.redirect_url[0].url;
-                                } else {
-                                    window.location = resOrder.redirect_url[1].url;
-                                }
-                            } else {
-                                window.location =
-                                    `/public/siswa/pembayaran-spp/invoice/${resOrder.invoice_id}`;
                             }
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Sudah Lunas.',
+                                text: 'Anda Sudah Melunasi Pembayaran Bulan Yang Diinput!'
+                            });
                         }
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Sudah Lunas.',
-                            text: 'Anda Sudah Melunasi Pembayaran Bulan Yang Diinput!'
-                        });
                     }
-                }
+                });
             });
-        });
-    </script>
-@endpush
+        </script>
+    @endpush

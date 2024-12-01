@@ -10,7 +10,8 @@ class EmailTest extends Controller
 {
     public function index()
     {
-        $invoice = Invoice::findOrFail(89);
-        Mail::to('anamnafiul99@gmail.com')->send(new InvoiceMail($invoice));
+        $invoice = Invoice::where('invoice', 'SPP2004950')->where('status', 'Belum Lunas')->first();
+        dd($invoice->siswa->user->email);
+        Mail::to('limnam0512@gmail.com')->send(new InvoiceMail($invoice));
     }
 }
