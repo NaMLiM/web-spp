@@ -7,7 +7,7 @@
     <link rel="stylesheet"
         href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 @endpush
-@section('content_title', 'Data Siswa')
+@section('content_title', 'Status Pembayaran Siswa')
 @section('content')
     <x-alert></x-alert>
     <div class="row">
