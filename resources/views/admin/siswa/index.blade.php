@@ -82,20 +82,20 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="nama_siswa">Nama Siswa*</label>
+                                    <label for="nama_siswa">Nama Siswa<span class="text-danger">*</span></label>
                                     <input required="" type="text" name="nama_siswa" id="nama_siswa"
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="nisn">NISN*</label>
+                                    <label for="nisn">NISN<span class="text-danger">*</span></label>
                                     <input required="" type="text" name="nisn" id="nisn" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="nis">NIS*</label>
+                                    <label for="nis">NIS<span class="text-danger">*</span></label>
                                     <input required="" type="text" name="nis" id="nis" class="form-control">
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="jenis_kelamin">Jenis Kelamin*</label>
+                                    <label for="jenis_kelamin">Jenis Kelamin<span class="text-danger">*</span></label>
                                     <select required="" name="jenis_kelamin" id="jenis_kelamin"
                                         class="form-control select2bs4">
                                         <option disabled="" selected="">- PILIH JENIS KELAMIN -</option>
@@ -114,20 +114,20 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="alamat">Alamat*</label>
+                                    <label for="alamat">Alamat<span class="text-danger">*</span></label>
                                     <input required="" type="text" name="alamat" id="alamat" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="no_telepon">No Telepon</label>
+                                    <label for="no_telepon">No Telepon<span class="text-danger">*</span></label>
                                     <input required="" type="text" name="no_telepon" id="no_telepon"
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="kelas_id">Kelas*</label>
+                                    <label for="kelas_id">Kelas<span class="text-danger">*</span></label>
                                     <select required="" name="kelas_id" id="kelas_id"
                                         class="form-control select2bs4">
                                         <option disabled="" selected="">- PILIH KELAS -</option>
@@ -139,21 +139,21 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="username">Username*</label>
+                                    <label for="username">Username<span class="text-danger">*</span></label>
                                     <input required="" type="text" name="username" id="username"
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="username">Password*</label>
+                                    <label for="username">Password<span class="text-danger">*</span></label>
                                     <input required="" type="password" name="password" id="password"
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="username">Email*</label>
+                                    <label for="username">Email<span class="text-danger">*</span></label>
                                     <input required="" type="email" name="email" id="email"
                                         class="form-control">
                                 </div>
@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <span class="text-danger">* Wajib diisi</span>
+                        <span class="text-danger">*</span><span> Wajib diisi</span>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save fa-fw"></i> SIMPAN
