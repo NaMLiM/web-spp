@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
-@section('title', 'Profile')
-@section('content_title', 'Profile')
+@section('title', 'Profil')
+@section('content_title', 'Profil')
 @section('content')
     <x-alert></x-alert>
     @role('admin|petugas')

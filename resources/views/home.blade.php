@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
-@section('title', 'Home')
-@section('content_title', 'Home')
+@section('title', 'Beranda')
+@section('content_title', 'Beranda')
 @section('content')
     <x-alert></x-alert>
     <div class="row">
@@ -13,7 +13,7 @@
                 @role('siswa')
                     <h1 class="display-4">Halo, {{ Universe::siswa()->nama_siswa }}!</h1>
                 @endrole
-                <p class="lead">Selamat datang di WEB Pembayaran SPP SMK NURUL AMANAH.</p>
+                <p class="lead">Selamat datang di Aplikasi pembayaran SPP SMK Nurul Amanah.</p>
                 <hr class="my-4">
             </div>
         </div>

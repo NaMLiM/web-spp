@@ -30,7 +30,7 @@
                                 <th>Untuk Bulan</th>
                                 <th>Untuk Tahun</th>
                                 <th>Nominal</th>
-                                <th>Print</th>
+                                <th>Cetak</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -31,7 +31,7 @@
                                 <th>Untuk Tahun</th>
                                 <th>Nominal</th>
                                 @role('admin')
-                                    <th>Print</th>
+                                    <th>Cetak</th>
                                 @endrole
                             </tr>
                         </thead>

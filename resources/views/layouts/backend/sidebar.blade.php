@@ -16,13 +16,13 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
+                    with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="{{ route('home.index') }}"
                         class="nav-link {{ Request::segment(1) == 'home' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
-                            Home
+                            Beranda
                         </p>
                     </a>
                 </li>
@@ -201,52 +201,52 @@
                 @endrole
 
                 {{-- @role('admin')
-                    <li class="nav-header">ROLES - PERMISSIONS</li>
-                    <li class="nav-item">
-                        <a href="{{ route('roles.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'roles' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-user-tie"></i>
-                            <p>
-                                Roles List
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('permissions.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'permissions' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-key"></i>
-                            <p>
-                                Permissions List
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('role-permission.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'role-permission' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-circle"></i>
-                            <p>
-                                Role - Permission
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('user-role.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'user-role' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-circle"></i>
-                            <p>
-                                User - Role
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('user-permission.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'user-permission' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-circle"></i>
-                            <p>
-                                User - Permission
-                            </p>
-                        </a>
-                    </li>
+                <li class="nav-header">ROLES - PERMISSIONS</li>
+                <li class="nav-item">
+                    <a href="{{ route('roles.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'roles' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>
+                            Roles List
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('permissions.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'permissions' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-key"></i>
+                        <p>
+                            Permissions List
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('role-permission.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'role-permission' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Role - Permission
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('user-role.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'user-role' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            User - Role
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('user-permission.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'user-permission' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            User - Permission
+                        </p>
+                    </a>
+                </li>
                 @endrole --}}
             </ul>
         </nav>
