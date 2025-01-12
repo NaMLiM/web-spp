@@ -148,8 +148,8 @@
                     <div class="card-title">Tutorial</div>
                 </div>
                 <div class="card-body">
-                    <div class="accordion" id="accordionExample">
-                        <div class="card">
+                    <div class="accordion" id="accordion">
+                        <div class="card" id="briTutorial">
                             <div class="card-header" id="headingOne">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link btn-block text-left" type="button"
@@ -158,21 +158,38 @@
                                         ATM</button>
                                 </h2>
                             </div>
-
-                            <div id="collapseOne" class="show collapse" aria-labelledby="headingOne"
-                                data-parent="#accordionExample">
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                data-parent="#accordion">
                                 <div class="card-body">
                                     <ol>
-                                        <li>Pergi ke ATM</li>
-                                        <li> Gunakan kartu rekening BRI kamu</li>
-                                        <li> Setelah masukkan pin pilih transaksi</li>
-                                        <li>Masukkan nomor virtual account yang kamu dapatkan dari website/email kamu
+                                        <li>Masukkan kartu ATM dan Masukkan 6 digit PIN ATM anda
                                         </li>
+                                        <li>Setelah masuk ke menu utama, pilih “Pembayaran/Pembelian”<br><img
+                                                src="{{ asset('img/tutorial/ATM/1.png') }}" class="float-end ms-2 shadow"
+                                                style="width: 512px"></li>
+                                        <li>Lalu pilih “Pembayaran/Pembelian Lain”<br><img
+                                                src="{{ asset('img/tutorial/ATM/2.png') }}" class="float-end ms-2 shadow"
+                                                style="width: 512px">></li>
+                                        <li>Pilih “BRIVA”<br><img src="{{ asset('img/tutorial/ATM/3.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 512px">></li>
+                                        </li>
+                                        <li>Masukkan nomor Virtual Account (VA / BRIVA) yang yang anda dapatkan dari website
+                                            pembayaran SPP SMK Nurul Amanah (Nomor Virtual akan selalu berubah setiap kali
+                                            melakukan pembayaran)</li>
+                                        </li>
+                                        <li>Anda akan diarahkan ke menu tagihan dan lakukan pembayaran dengan menekan tombol
+                                            “Konfirmasi”<br><img src="{{ asset('img/tutorial/ATM/4.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 512px">></li>
+                                        <li>Cetak struk pembayaran dari mesin ATM dan otomatis status pembayaran akan
+                                            berubah menjadi “Pembayaran Berhasil” di website pembayaran SPP SMK Nurul (Jika
+                                            ada kendala hubungi pihak sekolah dengan menunjukkan bukti sturk pembayaran dan
+                                            informasi pembayaran)<br><img src="{{ asset('img/tutorial/ATM/5.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px">></li>
                                     </ol>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" id="brimoTutorial">
                             <div class="card-header" id="headingTwo">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link btn-block collapsed text-left" type="button"
@@ -182,12 +199,63 @@
                                 </h2>
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                data-parent="#accordionExample">
+                                data-parent="#accordion">
                                 <div class="card-body">
                                     <ol>
-                                        <li>Buka Aplikasi BRIMO lalu Klik BRIVA</li>
-                                        <li>Pilih "Tambahkan Transaksi Baru"</li>
-                                        <li>Masukkan nomor virtual account yang kamu dapatkan dari website/email kamu
+                                        <li>Buka aplikasi brimo lalu cari menu “BRIVA”<br><img
+                                                src="{{ asset('img/tutorial/BRIMO/1.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                        <li>Pilih “Tambah Transaksi Baru”<br><img
+                                                src="{{ asset('img/tutorial/BRIMO/2.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                        <li>Masukkan Nomor Virtual yang anda dapatkan dari website pembayaran SPP SMK Nurul
+                                            Amanah (Nomor Virtual akan selalu berubah setiap kali melakukan
+                                            pembayaran)<br><img src="{{ asset('img/tutorial/BRIMO/3-1.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"><img
+                                                src="{{ asset('img/tutorial/BRIMO/3-2.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                        </li>
+                                        <li>Anda akan diarahkan ke menu tagihan dan lakukan pembayaran dengan menekan tombol
+                                            “Konfirmasi”</li>
+                                        <li>Setelah mengkonfirmasi tagihan tersebut, akan mendapatkan bukti transaksi dari
+                                            aplikasi BRIMO dan otomatis akan mendapatkan konfirmasi di website pembayaran
+                                            SPP SMK Nurul Amanah. Jika terdapat kendala hubungi pihak sekolah dengan
+                                            menyertakan bukti transaksi dan informasi pembayaran<br><img
+                                                src="{{ asset('img/tutorial/BRIMO/4-1.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"><img
+                                                src="{{ asset('img/tutorial/BRIMO/4-2.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="danaTutorial">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block collapsed text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        DANA</button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="showcollapse" aria-labelledby="headingThree"
+                                data-parent="#accordion">
+                                <div class="card-body">
+                                    <ol>
+                                        <li>Masukkan nomor handphone anda yang aktif menggunakan DANA dan masukkan pin DANA
+                                            anda<br><img src="{{ asset('img/tutorial/DANA/1.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                        <li>Selanjutnya anda akan masuk ke menu tagihan dan pastikan saldo DANA anda
+                                            mencukupi, setelah itu tekan “PAY” atau “Bayar”<br><img
+                                                src="{{ asset('img/tutorial/DANA/2.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                        <li>Setelah membayar, anda akan mendapat bukti transaksi dan status pembayaran akan
+                                            otomatis berubah (Jika ada kendala, hubungi pihak sekolah dan sertakan bukti
+                                            transaksi beserta informasi pembayaran pada Aplikasi Pembayaran SPP SMK Nurul
+                                            Amanah)<br><img src="{{ asset('img/tutorial/DANA/3-1.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"><img
+                                                src="{{ asset('img/tutorial/DANA/3-2.png') }}"
+                                                class="float-end ms-2 shadow" style="width: 256px"></li>
                                         </li>
                                     </ol>
                                 </div>
@@ -203,6 +271,13 @@
         <script src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/select2/js/select2.full.min.js"></script>
         <script type="text/javascript"
             src="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#danaTutorial').hide();
+                $('#briTutorial').hide();
+                $('#brimoTutorial').hide();
+            });
+        </script>
         <script>
             //Initialize Select2 Elements
             $('.select2').select2()
@@ -220,7 +295,17 @@
 
                 return formatter.format(number)
             }
-
+            $('#metode_pembayaran').on('change', function() {
+                if ($(this).val() === 'BRI') {
+                    $('#briTutorial').show();
+                    $('#brimoTutorial').show();
+                    $('#danaTutorial').hide();
+                } else {
+                    $('#danaTutorial').show();
+                    $('#briTutorial').hide();
+                    $('#brimoTutorial').hide();
+                }
+            });
             $(document).on("change", "#tahun_bayar", function() {
                 var tahun = $(this).val()
 
