@@ -6,10 +6,27 @@
     </head>
 
     <body>
-        <br><br>
-        <center>
-            <h2 style="font-family: sans-serif;">Laporan Pembayaran SPP</h2>
-        </center>
+        <table style="margin: auto; padding-left: 100px; text-align: center; height: 0;">
+            <tr style="height: 0; padding:0; margin:0;">
+                <td style="height: 0; padding:0; margin:0;">PEMERINTAH PROVINSI JAWA TIMUR</td>
+                <td rowspan="5"><img src="{{ public_path('img/LOGO_SMK_NURUL_AMANAH.jpg') }}" alt=""
+                        style="width: 128px; padding-left: 50px"></td>
+            </tr>
+            <tr style="height: 0; padding:0; margin:0;">
+                <td style="height: 0; padding:0; margin:0;">DINAS PENDIDIKAN</td>
+            </tr>
+            <tr style="height: 0; padding:0; margin:0;">
+                <td style="height: 0; padding:0; margin:0;"><b>SEKOLAH MENENGAH KEJURUAN NURUL AMANAH</b></td>
+            </tr>
+            <tr style="height: 0; padding:0; margin:0;">
+                <td style="height: 0; padding:0; margin:0;">Jl. Raya Tragah No. 9 Basanah</td>
+            </tr>
+            <tr style="height: 0; padding:0; margin:0;">
+                <td style="height: 0; padding:0; margin:0;">
+                    Email: - No telepon: -
+                </td>
+            </tr>
+        </table>
         <br>
         <b>Dari tanggal {{ \Carbon\Carbon::parse(request()->tanggal_mulai)->format('d-m-Y') }} -
             {{ \Carbon\Carbon::parse(request()->tanggal_selesai)->format('d-m-Y') }}</b><br><br>
