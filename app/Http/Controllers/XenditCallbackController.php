@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\InvoiceMail;
+use App\Mail\InvoicePaidMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use App\Models\Webhook;
@@ -58,6 +59,7 @@ class XenditCallbackController extends Controller
                 case 'SUCCEEDED':
                     $invoice->update(['status' => 'PAID']);
                     $jumlah_bayar = Spp::where('tahun', $invoice->tahun_bayar)->pluck('nominal')->first();
+                    Mail::to($invoice->siswa->user->email)->send(new InvoicePaidMail($invoice));
                     foreach (unserialize($invoice->bulan_bayar) as $bulan) {
                         Pembayaran::create([
                             'kode_pembayaran' => $invoice->invoice,

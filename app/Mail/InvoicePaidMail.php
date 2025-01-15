@@ -6,10 +6,11 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class InvoiceMail extends Mailable
+class InvoicePaidMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $data;
+
     /**
      * Create a new message instance.
      *
@@ -22,6 +23,6 @@ class InvoiceMail extends Mailable
 
     public function build()
     {
-        return $this->view('mail.invoice-mail')->subject('Invoice Pembayaran ' . $this->data->invoice);
+        return $this->view('mail.paid-mail')->subject('Pembayaran Invoice ' . $this->data->invoice . ' Berhasil');
     }
 }
