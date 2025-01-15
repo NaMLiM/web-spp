@@ -5,6 +5,22 @@
     <link rel="stylesheet" href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet"
         href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <style>
+        .img-responsive {
+            max-width: 100%;
+            /* Ensure images never exceed their container width */
+            height: auto;
+            /* Maintain aspect ratio */
+        }
+
+        /* Adjust image size for desktop screens */
+        @media (min-width: 768px) {
+            .img-responsive {
+                max-width: 512px;
+                /* Set maximum width for desktop */
+            }
+        }
+    </style>
 @endpush
 @section('content_title', 'Tambah Pembayaran')
 @section('content')
@@ -165,13 +181,13 @@
                                         <li>Masukkan kartu ATM dan Masukkan 6 digit PIN ATM anda
                                         </li>
                                         <li>Setelah masuk ke menu utama, pilih “Pembayaran/Pembelian”<br><img
-                                                src="{{ asset('img/tutorial/ATM/1.png') }}" class="float-end ms-2 shadow"
-                                                style="width: 512px"></li>
+                                                src="{{ asset('img/tutorial/ATM/1.png') }}"
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         <li>Lalu pilih “Pembayaran/Pembelian Lain”<br><img
-                                                src="{{ asset('img/tutorial/ATM/2.png') }}" class="float-end ms-2 shadow"
-                                                style="width: 512px">></li>
+                                                src="{{ asset('img/tutorial/ATM/2.png') }}"
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         <li>Pilih “BRIVA”<br><img src="{{ asset('img/tutorial/ATM/3.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 512px">></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         </li>
                                         <li>Masukkan nomor Virtual Account (VA / BRIVA) yang yang anda dapatkan dari website
                                             pembayaran SPP SMK Nurul Amanah (Nomor Virtual akan selalu berubah setiap kali
@@ -179,12 +195,12 @@
                                         </li>
                                         <li>Anda akan diarahkan ke menu tagihan dan lakukan pembayaran dengan menekan tombol
                                             “Konfirmasi”<br><img src="{{ asset('img/tutorial/ATM/4.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 512px">></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         <li>Cetak struk pembayaran dari mesin ATM dan otomatis status pembayaran akan
                                             berubah menjadi “Pembayaran Berhasil” di website pembayaran SPP SMK Nurul (Jika
                                             ada kendala hubungi pihak sekolah dengan menunjukkan bukti sturk pembayaran dan
                                             informasi pembayaran)<br><img src="{{ asset('img/tutorial/ATM/5.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px">></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                     </ol>
                                 </div>
                             </div>
@@ -204,16 +220,16 @@
                                     <ol>
                                         <li>Buka aplikasi brimo lalu cari menu “BRIVA”<br><img
                                                 src="{{ asset('img/tutorial/BRIMO/1.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         <li>Pilih “Tambah Transaksi Baru”<br><img
                                                 src="{{ asset('img/tutorial/BRIMO/2.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         <li>Masukkan Nomor Virtual yang anda dapatkan dari website pembayaran SPP SMK Nurul
                                             Amanah (Nomor Virtual akan selalu berubah setiap kali melakukan
                                             pembayaran)<br><img src="{{ asset('img/tutorial/BRIMO/3-1.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"><img
+                                                class="img-responsive float-end ms-2 shadow"><img
                                                 src="{{ asset('img/tutorial/BRIMO/3-2.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         </li>
                                         <li>Anda akan diarahkan ke menu tagihan dan lakukan pembayaran dengan menekan tombol
                                             “Konfirmasi”</li>
@@ -222,9 +238,9 @@
                                             SPP SMK Nurul Amanah. Jika terdapat kendala hubungi pihak sekolah dengan
                                             menyertakan bukti transaksi dan informasi pembayaran<br><img
                                                 src="{{ asset('img/tutorial/BRIMO/4-1.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"><img
+                                                class="img-responsive float-end ms-2 shadow"><img
                                                 src="{{ asset('img/tutorial/BRIMO/4-2.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                     </ol>
                                 </div>
                             </div>
@@ -244,18 +260,18 @@
                                     <ol>
                                         <li>Masukkan nomor handphone anda yang aktif menggunakan DANA dan masukkan pin DANA
                                             anda<br><img src="{{ asset('img/tutorial/DANA/1.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         <li>Selanjutnya anda akan masuk ke menu tagihan dan pastikan saldo DANA anda
                                             mencukupi, setelah itu tekan “PAY” atau “Bayar”<br><img
                                                 src="{{ asset('img/tutorial/DANA/2.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         <li>Setelah membayar, anda akan mendapat bukti transaksi dan status pembayaran akan
                                             otomatis berubah (Jika ada kendala, hubungi pihak sekolah dan sertakan bukti
                                             transaksi beserta informasi pembayaran pada Aplikasi Pembayaran SPP SMK Nurul
                                             Amanah)<br><img src="{{ asset('img/tutorial/DANA/3-1.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"><img
+                                                class="img-responsive float-end ms-2 shadow"><img
                                                 src="{{ asset('img/tutorial/DANA/3-2.png') }}"
-                                                class="float-end ms-2 shadow" style="width: 256px"></li>
+                                                class="img-responsive float-end ms-2 shadow"></li>
                                         </li>
                                     </ol>
                                 </div>
