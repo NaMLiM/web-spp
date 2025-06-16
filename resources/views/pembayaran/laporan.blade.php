@@ -13,16 +13,16 @@
                         @csrf
                         <div class="form-group">
                             <label for="tanggal_mulai">Tanggal Mulai</label>
-                            <input type="date" name="tanggal_mulai" required="" class="form-control"
-                                id="tanggal_mulai">
+                            <input class="form-control" id="tanggal_mulai" name="tanggal_mulai" type="date"
+                                required="">
                         </div>
                         <div class="form-group">
                             <label for="tanggal_selesai">Tanggal Selesai</label>
-                            <input type="date" name="tanggal_selesai" required="" class="form-control"
-                                id="tanggal_selesai">
+                            <input class="form-control" id="tanggal_selesai" name="tanggal_selesai" type="date"
+                                required="">
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-danger btn-sm">
+                            <button class="btn btn-danger btn-sm" type="submit">
                                 <i class="fas fa-print fa-fw"></i> PRINT
                             </button>
                         </div>
@@ -40,14 +40,14 @@
             var tanggal_selesai = $("#tanggal_selesai").val()
 
             $.ajax({
-                url: "/public/pembayaran/laporan/preview-pdf",
+                url: "/pembayaran/laporan/preview-pdf",
                 method: "GET",
                 data: {
                     tanggal_mulai: tanggal_mulai,
                     tanggal_selesai: tanggal_selesai,
                 },
                 success: function() {
-                    window.open('/public/pembayaran/laporan/preview-pdf')
+                    window.open('/pembayaran/laporan/preview-pdf')
                 }
             })
         })

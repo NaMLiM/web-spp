@@ -81,7 +81,7 @@
     $("body").on("click", ".btn-edit", function() {
         var id = $(this).attr("id")
         $.ajax({
-            url: "/public/admin/kelas/" + id + "/edit",
+            url: "/admin/kelas/" + id + "/edit",
             method: "GET",
             success: function(response) {
                 $("#id_edit").val(response.data.id)
@@ -107,7 +107,7 @@
         e.preventDefault()
         var id = $("#id_edit").val()
         $.ajax({
-            url: "/public/admin/kelas/" + id,
+            url: "/admin/kelas/" + id,
             method: "PATCH",
             data: $(this).serialize(),
             success: function(response) {
@@ -150,7 +150,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "/public/admin/kelas/" + id,
+                    url: "/admin/kelas/" + id,
                     method: "DELETE",
                     success: function(response) {
                         $('#dataTable2').DataTable().ajax.reload()

@@ -11,6 +11,7 @@ use App\Models\Invoice;
 use App\Models\Pembayaran;
 use App\Models\Spp;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 
@@ -59,7 +60,6 @@ class XenditCallbackController extends Controller
                 case 'SUCCEEDED':
                     $invoice->update(['status' => 'PAID']);
                     $jumlah_bayar = Spp::where('tahun', $invoice->tahun_bayar)->pluck('nominal')->first();
-                    Mail::to($invoice->siswa->user->email)->send(new InvoicePaidMail($invoice));
                     foreach (unserialize($invoice->bulan_bayar) as $bulan) {
                         Pembayaran::create([
                             'kode_pembayaran' => $invoice->invoice,
@@ -71,6 +71,11 @@ class XenditCallbackController extends Controller
                             'bulan_bayar' => $bulan,
                             'jumlah_bayar' => $jumlah_bayar,
                         ]);
+                    }
+                    try {
+                        Mail::to($invoice->siswa->user->email)->send(new InvoicePaidMail($invoice));
+                    } catch (\Exception $e) {
+                        Log::error('Email not sent: ' . $e->getMessage());
                     }
                     return response("Sukses", 200);
                 case 'SETTLING':
@@ -112,7 +117,11 @@ class XenditCallbackController extends Controller
             $webhook->webhook_log = json_encode($response->data);
             $webhook->saveQuietly();
             $invoice = Invoice::where('invoice', $response->data->reference_id)->where('status', 'Belum Lunas')->first();
-            Mail::to($invoice->siswa->user->email)->send(new InvoiceMail($invoice));
+            try {
+                Mail::to($invoice->siswa->user->email)->send(new InvoiceMail($invoice));
+            } catch (\Exception $e) {
+                Log::error('Email not sent: ' . $e->getMessage());
+            }
             return response("Diterima", 200);
         }
     }

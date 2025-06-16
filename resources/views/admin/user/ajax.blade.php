@@ -61,7 +61,7 @@
         var id = $(this).attr("id")
 
         $.ajax({
-            url: "/public/admin/user/" + id + "/edit",
+            url: "/admin/user/" + id + "/edit",
             method: "GET",
             success: function(response) {
                 $("#edit-modal").modal("show")
@@ -77,7 +77,7 @@
         e.preventDefault()
         var id = $("#id").val()
         $.ajax({
-            url: "/public/admin/user/" + id,
+            url: "/admin/user/" + id,
             method: "PATCH",
             data: $(this).serialize(),
             success: function() {
@@ -106,7 +106,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "/public/admin/user/" + id,
+                    url: "/admin/user/" + id,
                     method: "DELETE",
                     success: function() {
                         $('#dataTable2').DataTable().ajax.reload()

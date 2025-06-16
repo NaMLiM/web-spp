@@ -2,13 +2,14 @@
 @section('title', 'Data Pembayaran')
 @push('css')
     <!-- DataTables -->
-    <link rel="stylesheet"
-        href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet"
-        href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"
+        rel="stylesheet">
+    <link
+        href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
+        rel="stylesheet">
     <!-- Sweetalert 2 -->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.css">
+    <link type="text/css" href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/sweetalert2/sweetalert2.min.css"
+        rel="stylesheet">
 @endpush
 @section('content_title', 'Data Pembayaran')
 @section('content')
@@ -17,12 +18,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('pembayaran.kelas') }}" class="btn btn-primary btn-sm"><i
+                    <a class="btn btn-primary btn-sm" href="{{ route('pembayaran.kelas') }}"><i
                             class="fas fa-plus fa-fw"></i> Tambah Pembayaran</a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="dataTable2" class="table-bordered table-striped table">
+                    <table class="table-bordered table-striped table" id="dataTable2">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -146,7 +147,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "/public/admin/pembayaran-spp/" + id,
+                        url: "/admin/pembayaran-spp/" + id,
                         method: "DELETE",
                         success: function(response) {
                             $('#dataTable2').DataTable().ajax.reload()

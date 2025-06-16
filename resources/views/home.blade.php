@@ -22,14 +22,14 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card p-2">
-                    <a href="/public/siswa/pembayaran-spp" class="card-block stretched-link">
+                    <a class="card-block stretched-link" href="/siswa/pembayaran-spp">
                         <div class="card-body">Pembayaran</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="card p-2">
-                    <a href="/public/siswa/history-pembayaran" class="card-block stretched-link">
+                    <a class="card-block stretched-link" href="/siswa/history-pembayaran">
                         <div class="card-body">Riwayat Pembayaran</div>
                     </a>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <a href="{{ route('siswa.index') }}" class="small-box-footer">Detail <i
+                    <a class="small-box-footer" href="{{ route('siswa.index') }}">Detail <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     <div class="icon">
                         <i class="fas fa-school"></i>
                     </div>
-                    <a href="{{ route('kelas.index') }}" class="small-box-footer">Detail <i
+                    <a class="small-box-footer" href="{{ route('kelas.index') }}">Detail <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                     <div class="icon">
                         <i class="fas fa-user-tie"></i>
                     </div>
-                    <a href="{{ route('petugas.index') }}" class="small-box-footer">Detail <i
+                    <a class="small-box-footer" href="{{ route('petugas.index') }}">Detail <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <div class="icon">
                         <i class="fas fa-user-secret"></i>
                     </div>
-                    <a href="{{ route('admin-list.index') }}" class="small-box-footer">Detail <i
+                    <a class="small-box-footer" href="{{ route('admin-list.index') }}">Detail <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -109,35 +109,35 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="/public/admin/siswa" class="card-block stretched-link">
+                    <a class="card-block stretched-link" href="/admin/siswa">
                         <div class="card-body">Siswa</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="/public/admin/pembayaran-spp" class="card-block stretched-link">
+                    <a class="card-block stretched-link" href="/admin/pembayaran-spp">
                         <div class="card-body">Pembayaran</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="/public/admin/kelas" class="card-block stretched-link">
+                    <a class="card-block stretched-link" href="/admin/kelas">
                         <div class="card-body">Kelas</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="/public/pembayaran/status-pembayaran" class="card-block stretched-link">
+                    <a class="card-block stretched-link" href="/pembayaran/status-pembayaran">
                         <div class="card-body">Data Pembayaran</div>
                     </a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="card p-2">
-                    <a href="/public/pembayaran/history-pembayaran" class="card-block stretched-link">
+                    <a class="card-block stretched-link" href="/pembayaran/history-pembayaran">
                         <div class="card-body">Riwayat Pembayaran</div>
                     </a>
                 </div>
