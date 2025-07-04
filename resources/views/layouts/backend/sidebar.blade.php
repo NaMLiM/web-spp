@@ -7,19 +7,19 @@
                 <i class="nav-icon fas fa-user-circle fa-2x text-light"></i>
             </div>
             <div class="info">
-                <a href="javascript:void(0)" class="d-block">{{ Auth::user()->username }}</a>
+                <a class="d-block" href="javascript:void(0)">{{ Auth::user()->username }}</a>
             </div>
         </div>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" data-accordion="false"
+                role="menu">
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('home.index') }}"
-                        class="nav-link {{ Request::segment(1) == 'home' ? 'active' : '' }}">
+                    <a class="nav-link {{ Request::segment(1) == 'home' ? 'active' : '' }}"
+                        href="{{ route('home.index') }}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Beranda
@@ -30,8 +30,8 @@
                 @role('admin')
                     <li class="nav-header">MANAJEMEN DATA</li>
                     <li class="nav-item">
-                        <a href="{{ route('siswa.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'siswa' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'siswa' ? 'active' : '' }}"
+                            href="{{ route('siswa.index') }}">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
                                 Siswa
@@ -39,8 +39,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('pembayaran-spp.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'pembayaran-spp' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'pembayaran-spp' ? 'active' : '' }}"
+                            href="{{ route('pembayaran-spp.index') }}">
                             <i class="nav-icon fas fa-list"></i>
                             <p>
                                 Pembayaran
@@ -48,8 +48,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('kelas.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'kelas' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'kelas' ? 'active' : '' }}"
+                            href="{{ route('kelas.index') }}">
                             <i class="nav-icon fas fa-school"></i>
                             <p>
                                 Kelas
@@ -57,8 +57,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-list.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'admin-list' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'admin-list' ? 'active' : '' }}"
+                            href="{{ route('admin-list.index') }}">
                             <i class="nav-icon fas fa-user-tie"></i>
                             <p>
                                 Admin
@@ -66,8 +66,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('user.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'user' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'user' ? 'active' : '' }}"
+                            href="{{ route('user.index') }}">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
                                 User
@@ -75,8 +75,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('petugas.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'petugas' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'petugas' ? 'active' : '' }}"
+                            href="{{ route('petugas.index') }}">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Petugas
@@ -84,8 +84,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('spp.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'spp' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'spp' ? 'active' : '' }}"
+                            href="{{ route('spp.index') }}">
                             <i class="nav-icon fas fa-money-bill"></i>
                             <p>
                                 SPP
@@ -97,8 +97,8 @@
                 @role('petugas')
                     <li class="nav-header">MANAJEMEN DATA</li>
                     <li class="nav-item">
-                        <a href="{{ route('siswa.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'siswa' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'siswa' ? 'active' : '' }}"
+                            href="{{ route('siswa.index') }}">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
                                 Siswa
@@ -106,8 +106,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('kelas.index') }}"
-                            class="nav-link {{ Request::segment(2) == 'kelas' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'kelas' ? 'active' : '' }}"
+                            href="{{ route('kelas.index') }}">
                             <i class="nav-icon fas fa-school"></i>
                             <p>
                                 Kelas
@@ -119,8 +119,8 @@
                 @role('admin')
                     <li class="nav-header">PEMBAYARAN</li>
                     <li class="nav-item">
-                        <a href="{{ route('pembayaran.kelas') }}"
-                            class="nav-link {{ Request::segment(2) == 'bayar' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'bayar' ? 'active' : '' }}"
+                            href="{{ route('pembayaran.kelas') }}">
                             <i class="nav-icon fas fa-money-check"></i>
                             <p>
                                 Pembayaran
@@ -128,8 +128,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('pembayaran.status-pembayaran') }}"
-                            class="nav-link {{ Request::segment(2) == 'status-pembayaran' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'status-pembayaran' ? 'active' : '' }}"
+                            href="{{ route('pembayaran.status-pembayaran') }}">
                             <i class="nav-icon fas fa-money-bill"></i>
                             <p>
                                 Status Pembayaran
@@ -137,8 +137,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('pembayaran.history-pembayaran') }}"
-                            class="nav-link {{ Request::segment(2) == 'history-pembayaran' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'history-pembayaran' ? 'active' : '' }}"
+                            href="{{ route('pembayaran.history-pembayaran') }}">
                             <i class="nav-icon fas fa-history"></i>
                             <p>
                                 Riwayat Pembayaran
@@ -146,8 +146,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('pembayaran.laporan') }}"
-                            class="nav-link {{ Request::segment(2) == 'laporan' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'laporan' ? 'active' : '' }}"
+                            href="{{ route('pembayaran.laporan') }}">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>
+                                Laporan Pembayaran
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::segment(3) == 'belum-bayar' ? 'active' : '' }}"
+                            href="{{ route('laporan.belum_bayar') }}">
                             <i class="nav-icon fas fa-file"></i>
                             <p>
                                 Laporan Pembayaran
@@ -159,8 +168,8 @@
                 @role('petugas')
                     <li class="nav-header">PEMBAYARAN</li>
                     <li class="nav-item">
-                        <a href="{{ route('pembayaran.history-pembayaran') }}"
-                            class="nav-link {{ Request::segment(2) == 'history-pembayaran' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'history-pembayaran' ? 'active' : '' }}"
+                            href="{{ route('pembayaran.history-pembayaran') }}">
                             <i class="nav-icon fas fa-history"></i>
                             <p>
                                 Riwayat Pembayaran
@@ -168,8 +177,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('pembayaran.laporan') }}"
-                            class="nav-link {{ Request::segment(2) == 'laporan' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'laporan' ? 'active' : '' }}"
+                            href="{{ route('pembayaran.laporan') }}">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>
+                                Laporan Pembayaran
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::segment(3) == 'belum-bayar' ? 'active' : '' }}"
+                            href="{{ route('laporan.belum_bayar') }}">
                             <i class="nav-icon fas fa-file"></i>
                             <p>
                                 Laporan Pembayaran
@@ -181,8 +199,8 @@
                 @role('siswa')
                     <li class="nav-header">PEMBAYARAN</li>
                     <li class="nav-item">
-                        <a href="{{ route('siswa.pembayaran-spp') }}"
-                            class="nav-link {{ Request::segment(2) == 'pembayaran-spp' ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::segment(2) == 'pembayaran-spp' ? 'active' : '' }}"
+                            href="{{ route('siswa.pembayaran-spp') }}">
                             <i class="nav-icon fas fa-money-bill"></i>
                             <p>
                                 Pembayaran
@@ -190,8 +208,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('siswa.history-pembayaran') }}"
-                            class="nav-link {{ Request::is('siswa/history-pembayaran') ? 'active' : '' }}">
+                        <a class="nav-link {{ Request::is('siswa/history-pembayaran') ? 'active' : '' }}"
+                            href="{{ route('siswa.history-pembayaran') }}">
                             <i class="nav-icon fas fa-history"></i>
                             <p>
                                 Riwayat Pembayaran

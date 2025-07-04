@@ -19,6 +19,7 @@
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "maatwebsite/excel": "^3.1",
         "spatie/laravel-permission": "^4.2",
         "xendit/xendit-php": "^5.0.0",
         "yajra/laravel-datatables-oracle": "~9.0"
