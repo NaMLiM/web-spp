@@ -2,8 +2,8 @@
 @section('title', 'Dashboard')
 
 @push('css')
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/chart.js/Chart.min.css">
+    <link type="text/css" href="{{ asset('templates/backend/AdminLTE-3.1.0') }}/plugins/chart.js/Chart.min.css"
+        rel="stylesheet">
 @endpush
 
 @section('content_title', 'Dashboard')
@@ -21,7 +21,7 @@
                 <div class="icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <a href="{{ route('siswa.index') }}" class="small-box-footer">Detail <i
+                <a class="small-box-footer" href="{{ route('siswa.index') }}">Detail <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <div class="icon">
                     <i class="fas fa-school"></i>
                 </div>
-                <a href="{{ route('kelas.index') }}" class="small-box-footer">Detail <i
+                <a class="small-box-footer" href="{{ route('kelas.index') }}">Detail <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 <div class="icon">
                     <i class="fas fa-user-tie"></i>
                 </div>
-                <a href="{{ route('petugas.index') }}" class="small-box-footer">Detail <i
+                <a class="small-box-footer" href="{{ route('petugas.index') }}">Detail <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -70,7 +70,7 @@
                 <div class="icon">
                     <i class="fas fa-user-secret"></i>
                 </div>
-                <a href="{{ route('admin-list.index') }}" class="small-box-footer">Detail <i
+                <a class="small-box-footer" href="{{ route('admin-list.index') }}">Detail <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -119,11 +119,12 @@
             },
             options: {
                 scales: {
-                    yAxes: [{
+                    y: {
                         ticks: {
+                            stepSize: 1, // Set the step size to 1 for integer values
                             beginAtZero: true
                         }
-                    }]
+                    }
                 }
             }
         });

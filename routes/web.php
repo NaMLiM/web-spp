@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/kirimEmailTest', 'EmailTest@index');
+
+Route::get('/testNotifikasi', function () {
+    Artisan::call('app:send-fee-reminders');
+});
 Route::post('/callback/xendit', 'XenditCallbackController@handle');
 Route::get('/', function () {
     return view('auth.login');

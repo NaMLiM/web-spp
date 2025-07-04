@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Console\Commands\SendFeeReminders;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -28,6 +30,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('queue:work --stop-when-empty')
             ->everyMinute()
             ->withoutOverlapping();
+
+        $schedule->command('app:send-fee-reminders')->monthlyOn(25, '08:00');
     }
 
     /**

@@ -18,14 +18,14 @@ class Siswa extends Model
 
     protected $fillable = [
         'user_id',
-    	'kode_siswa',
-    	'nisn',
-    	'nis',
-    	'nama_siswa',
+        'kode_siswa',
+        'nisn',
+        'nis',
+        'nama_siswa',
         'jenis_kelamin',
-    	'alamat',
-    	'no_telepon',
-    	'kelas_id',
+        'alamat',
+        'no_telepon',
+        'kelas_id',
     ];
 
     public function user()

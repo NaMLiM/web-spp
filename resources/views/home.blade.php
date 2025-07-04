@@ -180,11 +180,12 @@
                     },
                     options: {
                         scales: {
-                            yAxes: [{
+                            y: {
                                 ticks: {
+                                    stepSize: 1, // Set the step size to 1 for integer values
                                     beginAtZero: true
                                 }
-                            }]
+                            }
                         }
                     }
                 });
