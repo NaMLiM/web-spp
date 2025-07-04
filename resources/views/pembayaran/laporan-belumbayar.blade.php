@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">Laporan Pembayaran</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('laporan.belum_bayar.export') }}">
+                    <form method="GET" action="{{ route('laporan.belum_bayar.export') }}">
                         @csrf
                         <div class="form-group">
                             <label for="periode">Periode (Bulan dan Tahun):</label>

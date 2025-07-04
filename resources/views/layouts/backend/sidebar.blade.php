@@ -155,11 +155,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::segment(3) == 'belum-bayar' ? 'active' : '' }}"
+                        <a class="nav-link {{ Request::segment(2) == 'export' ? 'active' : '' }}"
                             href="{{ route('laporan.belum_bayar') }}">
                             <i class="nav-icon fas fa-file"></i>
                             <p>
-                                Laporan Pembayaran
+                                Laporan Siswa Belum Bayar
                             </p>
                         </a>
                     </li>
@@ -186,11 +186,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::segment(3) == 'belum-bayar' ? 'active' : '' }}"
+                        <a class="nav-link {{ Request::segment(2) == 'export' ? 'active' : '' }}"
                             href="{{ route('laporan.belum_bayar') }}">
                             <i class="nav-icon fas fa-file"></i>
                             <p>
-                                Laporan Pembayaran
+                                Laporan Siswa Belum Bayar
                             </p>
                         </a>
                     </li>

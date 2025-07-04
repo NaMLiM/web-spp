@@ -11,10 +11,10 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 class SiswaBelumBayarExport implements FromCollection, WithHeadings, WithMapping
 {
 
-    protected int $month;
+    protected $month;
     protected int $year;
 
-    public function __construct(int $year, int $month)
+    public function __construct(int $year, $month)
     {
         $this->year = $year;
         $this->month = $month;

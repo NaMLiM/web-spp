@@ -31,10 +31,12 @@ class LaporanController extends Controller
         $year = $carbonDate->year;
 
         // 3. Generate a dynamic filename
-        $monthName = $carbonDate->locale('id')->format('F');
+        $formatter = new \IntlDateFormatter('id_ID', \IntlDateFormatter::FULL, \IntlDateFormatter::NONE);
+        $formatter->setPattern('MMMM'); // 'MMMM' is the pattern for the full month name
+        $monthName = $formatter->format($carbonDate);
         $fileName = "laporan_belum_bayar_{$monthName}_{$year}.xlsx";
 
         // 4. Trigger the download, passing the year and month to the export class
-        return Excel::download(new SiswaBelumBayarExport($year, $month), $fileName);
+        return Excel::download(new SiswaBelumBayarExport($year, $monthName), $fileName);
     }
 }

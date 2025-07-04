@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LaporanController;
+use App\Models\Siswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,6 @@ use App\Http\Controllers\Admin\LaporanController;
 */
 
 Route::get('/kirimEmailTest', 'EmailTest@index');
-
 Route::get('/testNotifikasi', function () {
     Artisan::call('app:send-fee-reminders');
 });
@@ -52,7 +52,7 @@ Route::prefix('pembayaran')->middleware(['auth', 'role:admin|petugas'])->group(f
 
     Route::get('history-pembayaran/preview/{id}', 'PembayaranController@printHistoryPembayaran')
         ->name('pembayaran.history-pembayaran.print');
-    Route::get('laporan/belum-bayar', [LaporanController::class, 'showExportForm'])->name('laporan.belum_bayar');
+    Route::get('export/belum-bayar', [LaporanController::class, 'showExportForm'])->name('laporan.belum_bayar');
     Route::get('laporan/belum-bayar/export', [LaporanController::class, 'exportSiswaBelumBayar'])
         ->name('laporan.belum_bayar.export');
     Route::get('laporan', 'PembayaranController@laporan')->name('pembayaran.laporan');
